@@ -2,4 +2,10 @@
     <string name="app_name">ПривратникЪ</string>
     <string name="repeat_request">Повторить запрос</string>
     <string name="something_went_wrong">Что-то пошло не так :\'(</string>
+    <string name="repeat_sms_code">Повторить отправку\nSMS-кода через X сек.</string>
+    <string name="lbl_your_phone">Ваш номер телефона</string>
+    <string name="lbl_get_sms_code">Получить SMS-код</string>
+    <string name="lbl_enter_sms_code">Введите SMS-код</string>
+    <string name="tmp_code">1234</string>
+    <string name="lbl_phone_number">+7(___) ___-__-__</string>
 </resources>

@@ -13,57 +13,74 @@ import ru.techmas.barrier.R
 import ru.techmas.barrier.interfaces.views.SplashView
 import ru.techmas.barrier.presenters.SplashPresenter
 import ru.techmas.barrier.utils.Injector
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 
 
-class SplashActivity : BaseActivity(), SplashView {
-
-    companion object {
-        private val LAYOUT = R.layout.activity_splash
-    }
-
-    @InjectPresenter
-    lateinit var splashPresenter: SplashPresenter
-
-    @ProvidePresenter
-    internal fun provideSplashPresenter(): SplashPresenter {
-        return Injector.presenterComponent!!.splashPresenter
-    }
-
-    private var ltBackground: LinearLayout? = null
-    private var btnRepeat: Button? = null
-    private var tvSomethingWentWrong: TextView? = null
-    private var progressBar: ProgressBar? = null
-
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(LAYOUT)
-        setupUI()
-        setupUX()
-        mvpDelegate.onAttach()
+
+        val intent = Intent(this, TestActivity::class.java)
+        startActivity(intent)
+        finish()
     }
-
-
-    override fun setupUX() {
-        btnRepeat!!.setOnClickListener { splashPresenter.startNext() }
-    }
-
-    override fun showErrorConnection(show: Boolean) {
-        if (show) {
-            hideView(progressBar!!)
-            showView(ltBackground!!)
-
-            animationHelper.scaleIn(tvSomethingWentWrong!!)
-        } else
-            hideView(ltBackground!!)
-    }
-
-    override fun setupUI() {
-        ltBackground = bindView<LinearLayout>(R.id.ltBackground)
-        btnRepeat = bindView<Button>(R.id.btnRepeat)
-        tvSomethingWentWrong = bindView<TextView>(R.id.tvSomethingWentWrong)
-        progressBar = bindView<ProgressBar>(R.id.progressBar)
-    }
-
-
 }
+
+//TODO: убрала потому что не запускалось
+
+//
+//class SplashActivity : BaseActivity(), SplashView {
+//
+//    companion object {
+//        private val LAYOUT = R.layout.activity_splash
+//    }
+//
+//    @InjectPresenter
+//    lateinit var splashPresenter: SplashPresenter
+//
+//    @ProvidePresenter
+//    internal fun provideSplashPresenter(): SplashPresenter {
+//        return Injector.presenterComponent!!.splashPresenter
+//    }
+//
+//    private var ltBackground: LinearLayout? = null
+//    private var btnRepeat: Button? = null
+//    private var tvSomethingWentWrong: TextView? = null
+//    private var progressBar: ProgressBar? = null
+//
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(LAYOUT)
+//        setupUI()
+//        setupUX()
+//        mvpDelegate.onAttach()
+//    }
+//
+//
+//    override fun setupUX() {
+//        btnRepeat!!.setOnClickListener { splashPresenter.startNext() }
+//    }
+//
+//    override fun showErrorConnection(show: Boolean) {
+//        if (show) {
+//            hideView(progressBar!!)
+//            showView(ltBackground!!)
+//
+//            animationHelper.scaleIn(tvSomethingWentWrong!!)
+//        } else
+//            hideView(ltBackground!!)
+//    }
+//
+//    override fun setupUI() {
+//        ltBackground = bindView<LinearLayout>(R.id.ltBackground)
+//        btnRepeat = bindView<Button>(R.id.btnRepeat)
+//        tvSomethingWentWrong = bindView<TextView>(R.id.tvSomethingWentWrong)
+//        progressBar = bindView<ProgressBar>(R.id.progressBar)
+//    }
+//
+//
+//}

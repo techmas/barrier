@@ -1,0 +1,100 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/down_block" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/activity_middle_margin"
+            android:src="@drawable/support" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_very_big_margin"
+            android:src="@drawable/logo_1" />
+
+        <TextView
+            style="@style/WhiteStandard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_small_margin"
+            android:layout_marginTop="@dimen/activity_very_big_margin"
+            android:text="@string/lbl_your_phone" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            style="@style/editTextRound"
+            android:layout_width="230dp"
+            android:hint="@string/lbl_phone_number"
+            android:textColorHint="@color/color_separate_line" />
+
+        <Button
+            android:id="@+id/btnGetSmsCode"
+            style="@style/editTextRound"
+            android:layout_width="190dp"
+            android:layout_marginTop="@dimen/activity_big_margin"
+            android:text="@string/lbl_get_sms_code"
+            android:textAllCaps="false"
+            android:textColorHint="@color/colorPrimary"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/llSmsCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/PrimaryLightStandard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:layout_marginTop="@dimen/activity_big_margin"
+                android:gravity="center"
+                android:text="@string/repeat_sms_code" />
+
+            <TextView
+                style="@style/WhiteStandard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:layout_marginTop="@dimen/activity_big_margin"
+                android:text="@string/lbl_enter_sms_code" />
+
+            <EditText
+                android:id="@+id/etSmsCode"
+                style="@style/editTextRound"
+                android:layout_width="100dp"
+                android:hint="@string/tmp_code"
+                android:textColorHint="@color/colorPrimary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
+

@@ -6,4 +6,8 @@
     <dimen name="activity_small_margin">8dp</dimen>
     <dimen name="activity_very_small_margin">5dp</dimen>
     <dimen name="activity_ultra_small_margin">3dp</dimen>
+    <dimen name="activity_big_margin">22dp</dimen>
+    <dimen name="activity_very_big_margin">40dp</dimen>
+    <dimen name="activity_ultra_big_margin">60dp</dimen>
+
 </resources>
