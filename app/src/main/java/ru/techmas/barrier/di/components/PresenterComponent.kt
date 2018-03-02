@@ -6,6 +6,7 @@ import dagger.Component
 import ru.techmas.barrier.App
 import ru.techmas.barrier.di.modules.RestModule
 import ru.techmas.barrier.di.modules.UtilsModule
+import ru.techmas.barrier.presenters.AuthPresenter
 import ru.techmas.barrier.presenters.MainActivityPresenter
 import ru.techmas.barrier.presenters.SplashPresenter
 
@@ -23,4 +24,5 @@ interface PresenterComponent {
 
     val mainActivityPresenter: MainActivityPresenter
     val splashPresenter: SplashPresenter
+    val authPresenter: AuthPresenter
 }
