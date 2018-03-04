@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimaryLight">#787d96</color>
 
+    <color name="gray_light">#e7e6e6</color>
+
+
 
     <color name="light_background">#FAFAFA</color>
     <color name="color_separate_line">#9E9E9E</color>

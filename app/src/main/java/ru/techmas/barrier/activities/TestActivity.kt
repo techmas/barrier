@@ -1,6 +1,7 @@
 package ru.techmas.barrier.activities
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -19,6 +20,7 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_autorization)
         addListenerOnButton()
+        setOnClickListener()
     }
 
     fun addListenerOnButton() {
@@ -28,5 +30,13 @@ class TestActivity : AppCompatActivity() {
     private fun showSms(v: View) {
         v.visibility = View.GONE
         llSmsCode.visibility = View.VISIBLE
+    }
+
+    fun setOnClickListener () {
+        ivSupport.setOnClickListener {
+            val intent = Intent(this, Test2Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
