@@ -20,6 +20,10 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="WhiteSmall" parent="WhiteStandard">
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="PrimaryStandard" parent="WhiteStandard">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
@@ -42,9 +46,14 @@
 
     </style>
 
-
     <style name="BlueButton" parent="editTextRound">
         <item name="android:background">@drawable/rounded_button_blue</item>
+    </style>
+
+    <style name="WhiteButtonOpen" parent="editTextRound">
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>

@@ -9,5 +9,6 @@
     <dimen name="activity_big_margin">22dp</dimen>
     <dimen name="activity_very_big_margin">40dp</dimen>
     <dimen name="activity_ultra_big_margin">60dp</dimen>
+    <dimen name="item_height">140dp</dimen>
 
 </resources>

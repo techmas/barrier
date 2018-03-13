@@ -13,4 +13,8 @@
     <string name="lbl_send">Отправить</string>
     <string name="lbl_back">Назад</string>
     <string name="et_comment">Введен неверный SMS-код...</string>
+    <string name="lbl_open">Открыть</string>
+    <string name="barrier_behind_house">Шлагбаум за домом</string>
+    <string name="tmp_address">ул. Власова 69</string>
+    <string name="tmp_phone">+7(961)785-71-98</string>
 </resources>
