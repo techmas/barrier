@@ -12,6 +12,8 @@
     <color name="light_background">#FAFAFA</color>
     <color name="color_separate_line">#9E9E9E</color>
     <color name="error_color">#F44336</color>
+    <color name="yellow">#a99243</color>
+
 
 
 </resources>

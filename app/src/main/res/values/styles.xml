@@ -48,12 +48,33 @@
 
     <style name="BlueButton" parent="editTextRound">
         <item name="android:background">@drawable/rounded_button_blue</item>
+        <item name="android:textColor">@color/light_background</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginTop">@dimen/activity_big_margin</item>
+
     </style>
 
     <style name="WhiteButtonOpen" parent="editTextRound">
         <item name="android:layout_width">110dp</item>
         <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="WhiteButton" parent="editTextRound">
+        <item name="android:layout_width">190dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="RedButton" parent="BlueButton">
+        <item name="android:background">@drawable/rounded_button_red</item>
+    </style>
+
+    <style name="YellowSmall" parent="GraySmall">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <style name="YellowStandard" parent="WhiteStandard">
+        <item name="android:textColor">@color/yellow</item>
     </style>
 
 </resources>

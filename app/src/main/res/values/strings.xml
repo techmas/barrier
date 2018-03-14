@@ -17,4 +17,14 @@
     <string name="barrier_behind_house">Шлагбаум за домом</string>
     <string name="tmp_address">ул. Власова 69</string>
     <string name="tmp_phone">+7(961)785-71-98</string>
+    <string name="old_equipment">На шлагбауме установлено\nустаревшее оборудование,\nзакажите его модернизацию</string>
+    <string name="lbl_modernization">Модернизация</string>
+    <string name="lvl_open_beside">Открывать когда рядом</string>
+    <string name="lbl_go_out">Выйти</string>
+    <string name="lbl_technical_support">Техническая поддержка</string>
+    <string name="lbl_launch_demo_training">Запуск демо обучения</string>
+    <string name="lbl_right_hand_control">Управление правой рукой</string>
+    <string name="name_barrier">Название шлагбаума</string>
+    <string name="address_barrier">Адрес шлагбаума</string>
+    <string name="delete_barrier">Удалить шлагбаум</string>
 </resources>

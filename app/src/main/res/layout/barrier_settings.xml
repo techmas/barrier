@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/item_height"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -14,66 +14,131 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/activity_middle_margin"
-            android:src="@drawable/support_blue" />
+            android:layout_margin="@dimen/activity_big_margin"
+            android:src="@drawable/support" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvNameBarrier"
-                style="@style/WhiteStandard"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/barrier_behind_house" />
+                android:layout_marginBottom="@dimen/activity_middle_margin"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvAddressBarrier"
-                style="@style/WhiteSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tmp_address" />
+                <TextView
+                    style="@style/PrimaryStandard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name_barrier" />
 
-            <TextView
-                android:id="@+id/tvPhoneBarrier"
-                style="@style/WhiteSmall"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivSettingsName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_big_margin"
+                    android:src="@drawable/ic_mode_edit_blue" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tmp_phone" />
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/PrimaryStandard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_barrier" />
+
+                <ImageView
+                    android:id="@+id/ivSettingsAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_big_margin"
+                    android:src="@drawable/ic_mode_edit_blue" />
+
+            </RelativeLayout>
 
         </LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout">
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnOpen"
-            style="@style/WhiteButtonOpen"
+        <TextView
+            style="@style/PrimaryStandard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_big_margin"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/activity_middle_margin"
-            android:text="@string/lbl_open" />
+            android:text="@string/lvl_open_beside" />
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_settings" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+        <CheckBox
+            android:id="@+id/cbOpen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/activity_big_margin"
-            android:src="@drawable/ic_settings" />
+            android:buttonTint="@color/colorPrimary"
+            android:checked="true"/>
     </RelativeLayout>
 
+    <include layout="@layout/separate_line" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/Modernization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvOldEquipment"
+            style="@style/YellowSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/old_equipment" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tvOldEquipment"
+            android:src="@drawable/ic_error_outline_yellow_24dp"
+            android:layout_alignBaseline="@+id/tvOldEquipment"/>
+
+        <Button
+            android:id="@+id/btnModernization"
+            style="@style/BlueButton"
+            android:layout_width="180dp"
+            android:layout_below="@+id/tvOldEquipment"
+            android:layout_centerHorizontal="true"
+            android:text="@string/lbl_modernization" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/DeleteBarrier"
+            style="@style/RedButton"
+            android:layout_width="180dp"
+            android:layout_marginBottom="@dimen/activity_ultra_big_margin"
+            android:text="@string/delete_barrier"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+</LinearLayout>
 

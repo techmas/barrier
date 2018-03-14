@@ -53,13 +53,9 @@
 
         <Button
             android:id="@+id/btnGetSmsCode"
-            style="@style/editTextRound"
-            android:layout_width="190dp"
-            android:layout_marginTop="@dimen/activity_big_margin"
+            style="@style/WhiteButton"
             android:text="@string/lbl_get_sms_code"
-            android:textAllCaps="false"
-            android:textColorHint="@color/colorPrimary"
-            android:visibility="visible" />
+            android:layout_marginTop="@dimen/activity_big_margin"/>
 
         <LinearLayout
             android:id="@+id/llSmsCode"
