@@ -27,4 +27,9 @@
     <string name="name_barrier">Название шлагбаума</string>
     <string name="address_barrier">Адрес шлагбаума</string>
     <string name="delete_barrier">Удалить шлагбаум</string>
+    <string name="lbl_phone_number_opening_barrier">Номер телефона\nоткрытия шлагбаума</string>
+    <string name="lbl_add">Добавить</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>

@@ -15,7 +15,14 @@ import ru.techmas.barrier.R
  * Created by natalia on 01.03.18.
  */
 
-class TestActivity : AppCompatActivity() {
+class TestActivity : BaseActivity() {
+    override fun setupUX() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setupUI() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

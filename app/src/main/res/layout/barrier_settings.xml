@@ -26,8 +26,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_middle_margin"
-                android:orientation="horizontal">
+                android:layout_marginBottom="@dimen/activity_middle_margin">
 
                 <TextView
                     style="@style/PrimaryStandard"
@@ -47,8 +46,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/PrimaryStandard"
@@ -72,8 +70,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/PrimaryStandard"

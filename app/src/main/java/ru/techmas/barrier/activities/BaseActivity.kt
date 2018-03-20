@@ -37,6 +37,8 @@ abstract class BaseActivity : MvpAppCompatActivity(), NavigatorActivityView, Bas
         super.onCreate(savedInstanceState)
         Injector.viewComponent?.inject(this)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        setupUI()
+        setupUX()
     }
 
 

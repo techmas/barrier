@@ -73,7 +73,7 @@
         android:textSize="12dp" />
 
     <Button
-        android:id="@+id/btnGetSmsCode"
+        android:id="@+id/btnSend"
         style="@style/BlueButton"
         android:layout_width="120dp"
         android:layout_marginTop="@dimen/activity_vertical_margin"

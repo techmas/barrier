@@ -37,8 +37,9 @@ ext.versionDagger = '2.9'
 dependencies {
 
     //moxy mvp
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.arello-mobile:moxy:$versionMoxy"
-    kapt  "com.arello-mobile:moxy-compiler:$versionMoxy"
+    kapt "com.arello-mobile:moxy-compiler:$versionMoxy"
     compile "com.arello-mobile:moxy-app-compat:$versionMoxy"
     compile "com.arello-mobile:moxy-android:$versionMoxy"
     //retrofit2
@@ -63,7 +64,7 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.0.0-RC0'
     //di
     compile "com.google.dagger:dagger:$versionDagger"
-    kapt  "com.google.dagger:dagger-compiler:$versionDagger"
+    kapt "com.google.dagger:dagger-compiler:$versionDagger"
     provided 'javax.annotation:jsr250-api:1.0'
 
     compile 'com.jakewharton.timber:timber:4.5.1'
