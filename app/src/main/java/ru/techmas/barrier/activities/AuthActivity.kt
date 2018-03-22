@@ -6,40 +6,42 @@ import android.os.Bundle
 
 import ru.techmas.barrier.interfaces.views.AuthView
 import ru.techmas.barrier.presenters.AuthPresenter
-import ru.techmas.barrier.activities.BaseActivity
 import ru.techmas.barrier.R
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-
-import ru.techmas.barrier.App
+import kotlinx.android.synthetic.main.activity_auth.*
 import ru.techmas.barrier.utils.Injector
 
 
 class AuthActivity : BaseActivity(), AuthView {
 
-    @InjectPresenter
-    lateinit var authPresenter: AuthPresenter
-
-    @ProvidePresenter
-    internal fun provideAuthPresenter(): AuthPresenter {
-        return  Injector.presenterComponent!!.authPresenter
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setContentView(LAYOUT)
+        super.onCreate(savedInstanceState)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(LAYOUT)
+    override fun showCode() {
+        hideView(btnGetSmsCode)
+        showView(llSmsCode)
     }
 
     override fun setupUI() {
     }
 
     override fun setupUX() {
+        btnGetSmsCode.setOnClickListener { authPresenter.sendSms(etPhone.text.toString()) }
+        ivSupport.setOnClickListener { authPresenter.supportClick() }
     }
 
-    companion object {
+    @InjectPresenter
+    lateinit var authPresenter: AuthPresenter
 
-        private val LAYOUT = R.layout.activity_auth
+    @ProvidePresenter
+    internal fun provideAuthPresenter() = Injector.presenterComponent!!.authPresenter
+
+    companion object {
+        private const val LAYOUT = R.layout.activity_auth
 
         fun getIntent(context: Context): Intent {
             return Intent(context, AuthActivity::class.java)

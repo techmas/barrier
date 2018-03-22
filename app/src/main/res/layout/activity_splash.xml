@@ -1,11 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:orientation="vertical"
-              android:id="@+id/ltBackground"
-              android:visibility="gone"
-              android:gravity="center"
-              android:layout_height="match_parent" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ltBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_splash"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone">
 
     <TextView
         android:id="@+id/tvSomethingWentWrong"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="@string/something_went_wrong"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/btnRepeat"
@@ -21,13 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:text="@string/repeat_request"/>
+        android:text="@string/repeat_request" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </LinearLayout>
 

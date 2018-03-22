@@ -19,7 +19,6 @@ import ru.techmas.barrier.utils.AnimationHelper
 @Module
 class ViewModule(app: App) {
 
-
     private val animationHelper: AnimationHelper = AnimationHelper(app)
 
     @Provides

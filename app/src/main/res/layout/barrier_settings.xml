@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/activity_big_margin"
-                    android:src="@drawable/ic_mode_edit_blue" />
+                    android:src="@drawable/edit_2" />
 
             </RelativeLayout>
 
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/activity_big_margin"
-                    android:src="@drawable/ic_mode_edit_blue" />
+                    android:src="@drawable/edit_2" />
 
             </RelativeLayout>
 

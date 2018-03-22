@@ -9,6 +9,7 @@ import ru.techmas.barrier.di.modules.UtilsModule
 import ru.techmas.barrier.presenters.AuthPresenter
 import ru.techmas.barrier.presenters.MainActivityPresenter
 import ru.techmas.barrier.presenters.SplashPresenter
+import ru.techmas.barrier.presenters.SupportPresenter
 
 /**
  * Created by Alex Bykov on 09.11.2016.
@@ -25,4 +26,5 @@ interface PresenterComponent {
     val mainActivityPresenter: MainActivityPresenter
     val splashPresenter: SplashPresenter
     val authPresenter: AuthPresenter
+    val supportPresenter: SupportPresenter
 }

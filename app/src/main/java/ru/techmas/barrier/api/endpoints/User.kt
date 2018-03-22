@@ -2,8 +2,10 @@ package ru.techmas.barrier.api.endpoints
 
 import io.reactivex.Observable
 import retrofit2.Response
-import retrofit2.http.GET
+import retrofit2.http.*
 import ru.techmas.barrier.api.ApiResponse
+
+
 
 /**
  * Created by Alex Bykov on 09.11.2016.
@@ -12,8 +14,12 @@ import ru.techmas.barrier.api.ApiResponse
 
 interface User {
 
+    @FormUrlEncoded
+    @POST("api.php")
+    fun sendSms(@Field("number") number:String): Observable<Response<ApiResponse<String>>>
 
-    //    // TODO: 09.11.2016 init here!
-    @get:GET("album/list")
-    val test: Observable<Response<ApiResponse<String>>>
+    @FormUrlEncoded
+    @POST("api.php")
+    fun checkCode(@Field("number") number:String,
+                  @Field("smsCode") code:String): Observable<Response<ApiResponse<String>>>
 }

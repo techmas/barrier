@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 import ru.techmas.barrier.App
 import ru.techmas.barrier.api.RestApi
-import ru.techmas.barrier.utils.presenter.TokenHelper
+import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
 /**
  * Date: 04.06.2017
@@ -22,24 +22,16 @@ import ru.techmas.barrier.utils.presenter.TokenHelper
 @Module
 class RestModule(app: App) {
 
-    private val tokenHelper: TokenHelper = TokenHelper(PreferenceManager.getDefaultSharedPreferences(app))
-    private val restApi: RestApi
-
-    init {
-        restApi = RestApi(tokenHelper)
-    }
-
+    private val preferenceHelper: PreferenceHelper = PreferenceHelper(PreferenceManager.getDefaultSharedPreferences(app))
+    private val restApi: RestApi = RestApi()
 
     @Singleton
     @Provides
-    internal fun provideRestApi(): RestApi {
-        return restApi
-    }
+    internal fun provideRestApi() = restApi
 
     @Singleton
     @Provides
-    internal fun provideTokenHelper(): TokenHelper {
-        return tokenHelper
-    }
+    internal fun providePreferenceHelper() = preferenceHelper
+
 }
 
