@@ -4,6 +4,7 @@ import android.support.design.widget.NavigationView
 import android.view.MenuItem
 import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.R
+import ru.techmas.barrier.activities.SettingsActivity
 import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.interfaces.views.MainView
 import javax.inject.Inject
@@ -17,7 +18,7 @@ internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), Navigati
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-//            R.id.nav_settings -> viewState.startActivity(TestActivity::class.java)
+            R.id.nav_settings -> viewState.startActivity(SettingsActivity::class.java)
         }
         viewState.closeDrawers()
         return false

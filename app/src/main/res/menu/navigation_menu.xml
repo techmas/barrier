@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_open"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/open_2"
             android:title="Открыть" />
         <item
             android:id="@+id/nav_cameras"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/cam_1"
             android:title="Камеры" />
         <item
             android:id="@+id/nav_map"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/maps_1"
             android:title="На карте" />
         <item
             android:id="@+id/nav_wallet"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/wallet_1"
             android:title="Кошелек" />
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/settings_1"
             android:title="Настройки" />
     </group>
 

@@ -19,32 +19,20 @@ import ru.techmas.barrier.utils.Injector
 
 class MainActivity : BaseActivity(), MainView {
 
-    override fun setupHeader(account: Account) {
-
-    }
-
     lateinit var toggle: ActionBarDrawerToggle
     var hasBackButton: Boolean = false
-
-    companion object {
-        private val LAYOUT = R.layout.activity_main
-    }
-
-    @InjectPresenter
-    lateinit var mainPresenter: MainActivityPresenter
-
-    @ProvidePresenter
-    internal fun provideMainActivityPresenter(): MainActivityPresenter {
-        return Injector.presenterComponent!!.mainActivityPresenter
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(LAYOUT)
         super.onCreate(savedInstanceState)
     }
 
-    override fun setupUI() {
+    override fun setupHeader(account: Account) {
 
+    }
+
+    override fun setupUI() {
+        setSupportActionBar(toolbar)
     }
 
     override fun setupUX() {
@@ -56,10 +44,10 @@ class MainActivity : BaseActivity(), MainView {
         navigationView.setNavigationItemSelectedListener(mainPresenter)
     }
 
-    fun setDrawerState(isEnabled: Boolean) {
+    private fun setDrawerState(isEnabled: Boolean) {
         if (isEnabled) {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-            toggle.setDrawerIndicatorEnabled(true)
+            toggle.isDrawerIndicatorEnabled = true
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             hasBackButton = false
@@ -68,7 +56,7 @@ class MainActivity : BaseActivity(), MainView {
             supportActionBar?.setHomeButtonEnabled(true)
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
             hasBackButton = true
-            toggle.setDrawerIndicatorEnabled(false)
+            toggle.isDrawerIndicatorEnabled = false
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             toggle.syncState()
@@ -96,5 +84,13 @@ class MainActivity : BaseActivity(), MainView {
         return super.onOptionsItemSelected(item)
     }
 
+    @InjectPresenter
+    lateinit var mainPresenter: MainActivityPresenter
 
+    @ProvidePresenter
+    internal fun provideMainActivityPresenter() = Injector.presenterComponent!!.mainActivityPresenter
+
+    companion object {
+        private const val LAYOUT = R.layout.activity_main
+    }
 }

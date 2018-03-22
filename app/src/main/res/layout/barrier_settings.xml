@@ -15,7 +15,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/activity_big_margin"
-            android:src="@drawable/support" />
+            android:src="@drawable/editphoto" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,8 +38,10 @@
                     android:id="@+id/ivSettingsName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/activity_big_margin"
+                    android:padding="@dimen/activity_small_margin"
                     android:src="@drawable/edit_2" />
 
             </RelativeLayout>
@@ -58,6 +60,8 @@
                     android:id="@+id/ivSettingsAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/activity_small_margin"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/activity_big_margin"
                     android:src="@drawable/edit_2" />
@@ -110,7 +114,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/tvOldEquipment"
-            android:src="@drawable/ic_error_outline_yellow_24dp"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:src="@drawable/attention"
             android:layout_alignBaseline="@+id/tvOldEquipment"/>
 
         <Button

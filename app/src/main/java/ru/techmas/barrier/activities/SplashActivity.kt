@@ -25,12 +25,6 @@ class SplashActivity : BaseActivity(), SplashView {
 //    private var tvSomethingWentWrong: TextView? = null
 //    private var progressBar: ProgressBar? = null
 
-    @InjectPresenter
-    lateinit var splashPresenter: SplashPresenter
-
-    @ProvidePresenter
-    internal fun provideSplashPresenter() = Injector.presenterComponent!!.splashPresenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(LAYOUT)
@@ -58,6 +52,12 @@ class SplashActivity : BaseActivity(), SplashView {
 //        tvSomethingWentWrong = bindView<TextView>(R.id.tvSomethingWentWrong)
 //        progressBar = bindView<ProgressBar>(R.id.progressBar)
     }
+
+    @InjectPresenter
+    lateinit var splashPresenter: SplashPresenter
+
+    @ProvidePresenter
+    internal fun provideSplashPresenter() = Injector.presenterComponent!!.splashPresenter
 
     companion object {
         private const val LAYOUT = R.layout.activity_splash

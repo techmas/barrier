@@ -32,6 +32,7 @@ class AuthActivity : BaseActivity(), AuthView {
     override fun setupUX() {
         btnGetSmsCode.setOnClickListener { authPresenter.sendSms(etPhone.text.toString()) }
         ivSupport.setOnClickListener { authPresenter.supportClick() }
+        etSmsCode.setOnFocusChangeListener { v, hasFocus -> authPresenter.checkCode(etSmsCode.text.toString(), hasFocus)}
     }
 
     @InjectPresenter
