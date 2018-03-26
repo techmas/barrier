@@ -13,6 +13,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
 import ru.techmas.barrier.R
+import ru.techmas.barrier.fragments.BaseFragment
 import ru.techmas.barrier.interfaces.views.MainView
 import ru.techmas.barrier.presenters.MainActivityPresenter
 import ru.techmas.barrier.utils.Injector

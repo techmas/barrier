@@ -13,4 +13,9 @@ class Const {
         val API_TEST = "http://admin.ss-ss.sssss.ru/ss/ss/"
         val AUTHORIZATION = "Authorization"
     }
+
+    object State {
+        val OK = 1
+        val ERROR = 0
+    }
 }

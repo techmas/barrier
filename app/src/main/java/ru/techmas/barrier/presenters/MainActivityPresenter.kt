@@ -6,6 +6,7 @@ import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.R
 import ru.techmas.barrier.activities.SettingsActivity
 import ru.techmas.barrier.api.RestApi
+import ru.techmas.barrier.fragments.MainFragment
 import ru.techmas.barrier.interfaces.views.MainView
 import javax.inject.Inject
 
@@ -14,6 +15,7 @@ class MainActivityPresenter @Inject
 internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), NavigationView.OnNavigationItemSelectedListener {
 
     init {
+        viewState.startFragment(MainFragment.newInstance())
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

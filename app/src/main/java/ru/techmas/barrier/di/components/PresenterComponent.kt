@@ -25,4 +25,6 @@ interface PresenterComponent {
     val authPresenter: AuthPresenter
     val supportPresenter: SupportPresenter
     val settingsPresenter: SettingsPresenter
+    val mainFragmentPresenter: MainFragmentPresenter
+    val barrierDetailPresenter: BarrierDetailPresenter
 }

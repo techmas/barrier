@@ -1,10 +1,8 @@
 package ru.techmas.barrier.api.endpoints
 
 import io.reactivex.Observable
-import retrofit2.Response
 import retrofit2.http.*
-import ru.techmas.barrier.api.ApiResponse
-import ru.techmas.barrier.api.models.TokenResponse
+import ru.techmas.barrier.api.models.StateResponse
 
 
 /**
@@ -16,10 +14,10 @@ interface User {
 
     @FormUrlEncoded
     @POST("api.php")
-    fun sendSms(@Field("number") number:String): Observable<TokenResponse>
+    fun sendSms(@Field("number") number:String): Observable<StateResponse>
 
     @FormUrlEncoded
     @POST("api.php")
     fun checkCode(@Field("number") number:String,
-                  @Field("smsCode") code:String): Observable<TokenResponse>
+                  @Field("smsCode") code:String): Observable<StateResponse>
 }

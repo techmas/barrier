@@ -3,12 +3,10 @@ package ru.techmas.barrier.presenters
 import ru.techmas.barrier.interfaces.views.AuthView
 
 import com.arellomobile.mvp.InjectViewState
-import retrofit2.Response
 import ru.techmas.barrier.activities.MainActivity
 import ru.techmas.barrier.activities.SupportActivity
-import ru.techmas.barrier.api.ApiResponse
 import ru.techmas.barrier.api.RestApi
-import ru.techmas.barrier.api.models.TokenResponse
+import ru.techmas.barrier.api.models.StateResponse
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
@@ -27,7 +25,7 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
         unSubscribeOnDestroy(request)
     }
 
-    private fun successSendSms(response: TokenResponse) {
+    private fun successSendSms(response: StateResponse) {
         viewState.showCode()
     }
 
@@ -44,7 +42,7 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
         }
     }
 
-    private fun successCodeCheck(response: TokenResponse) {
+    private fun successCodeCheck(response: StateResponse) {
         response.key?.let {
             preferenceHelper.token = it
             viewState.startActivity(MainActivity::class.java)

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.animation.Animation
 
 import com.arellomobile.mvp.MvpAppCompatFragment
+import ru.techmas.barrier.R
 
 import ru.techmas.barrier.activities.BaseActivity
 import ru.techmas.barrier.interfaces.utils_view.BaseLifeCycle
@@ -29,7 +30,6 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
     protected val TAG = javaClass.simpleName
     protected var rootView: View? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Injector.viewComponent?.inject(this)
@@ -47,6 +47,14 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
         Navigator.startActivityForResult(activity, activityClass, requestCode)
     }
 
+    override fun startFragment(baseFragment: BaseFragment, addToBackStack: Boolean) {
+        Navigator.startFragment(baseFragment, activity.supportFragmentManager, R.id.ltContainer, addToBackStack)
+    }
+
+    override fun startFragment(baseFragment: BaseFragment) {
+        Navigator.startFragment(baseFragment, activity.supportFragmentManager, R.id.ltContainer)
+    }
+
     protected fun hideView(view: View) {
         if (view.visibility == View.VISIBLE) {
             view.visibility = View.GONE
@@ -59,21 +67,18 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
         }
     }
 
-
-    override fun onCreateAnimation(transit: Int, enter: Boolean, nextAnim: Int): Animation {
-        if (Navigator.isFragmentAnimationDisabled) {
-            val a = object : Animation() {}
-            a.duration = 0
-            return a
-        }
-        return super.onCreateAnimation(transit, enter, nextAnim)
-    }
-
+//    override fun onCreateAnimation(transit: Int, enter: Boolean, nextAnim: Int): Animation {
+//        if (Navigator.isFragmentAnimationDisabled) {
+//            val a = object : Animation() {}
+//            a.duration = 0
+//            return a
+//        }
+//        return super.onCreateAnimation(transit, enter, nextAnim)
+//    }
 
     protected fun <T : View> bindView(@IdRes id: Int): T {
         return rootView!!.findViewById(id)
     }
-
 
     protected fun bindDimen(@DimenRes id: Int): Int {
         return resources.getDimension(id).toInt()
@@ -83,10 +88,8 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
         return ContextCompat.getColor(context, id)
     }
 
-
     protected fun bindString(@StringRes id: Int): String {
         return getString(id)
     }
-
 
 }

@@ -1,6 +1,6 @@
 package ru.techmas.barrier.api.models
 
-data class TokenResponse(
+data class StateResponse(
         val key: String? = null,
-        val state: String? = null
+        val state: Int? = null
 )

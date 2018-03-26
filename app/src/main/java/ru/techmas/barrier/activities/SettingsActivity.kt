@@ -38,7 +38,7 @@ class SettingsActivity : BaseSingleActivity(), SettingsView {
 
     companion object {
 
-        private const val LAYOUT = R.layout.barrier_settings
+        private const val LAYOUT = R.layout.activity_settings
 
         fun getIntent(context: Context): Intent {
             return Intent(context, SettingsActivity::class.java)

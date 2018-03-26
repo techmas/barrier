@@ -11,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.techmas.barrier.Const
+import ru.techmas.barrier.api.endpoints.Barrier
 import ru.techmas.barrier.api.endpoints.User
 
 /**
@@ -22,6 +23,7 @@ import ru.techmas.barrier.api.endpoints.User
 class RestApi() {
 
     val user: User
+    val barrier: Barrier
     private val retrofit: Retrofit
 
     init {
@@ -45,6 +47,7 @@ class RestApi() {
                 .build()
 
         user = retrofit.create(User::class.java)
+        barrier = retrofit.create(Barrier::class.java)
     }
 
 //    fun getServer(): String {

@@ -14,6 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import javax.inject.Inject
 
 import ru.techmas.barrier.R
+import ru.techmas.barrier.fragments.BaseFragment
 import ru.techmas.barrier.interfaces.utils_view.BaseLifeCycle
 import ru.techmas.barrier.interfaces.utils_view.NavigatorActivityView
 import ru.techmas.barrier.utils.AnimationHelper
@@ -63,6 +64,14 @@ abstract class BaseActivity : MvpAppCompatActivity(), NavigatorActivityView, Bas
 
     override fun startActivityForResult(activityClass: Class<out BaseActivity>, requestCode: Int) {
         Navigator.startActivityForResult(this, activityClass, requestCode)
+    }
+
+    override fun startFragment(baseFragment: BaseFragment, addToBackStack: Boolean) {
+        Navigator.startFragment(baseFragment, supportFragmentManager, R.id.ltContainer, addToBackStack)
+    }
+
+    override fun startFragment(baseFragment: BaseFragment) {
+        Navigator.startFragment(baseFragment, supportFragmentManager, R.id.ltContainer)
     }
 
     override fun finish() {
