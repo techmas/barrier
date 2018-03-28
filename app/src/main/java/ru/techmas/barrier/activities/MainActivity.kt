@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.view.Menu
 import android.view.MenuItem
 
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -75,6 +76,11 @@ class MainActivity : BaseActivity(), MainView {
         drawer.closeDrawers()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.barrier_toolbar_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> if (!hasBackButton) {
@@ -82,6 +88,7 @@ class MainActivity : BaseActivity(), MainView {
                 drawer.openDrawer(GravityCompat.START)
             }
         }
+        mainPresenter.onOptionsItemSelected(item)
         return super.onOptionsItemSelected(item)
     }
 

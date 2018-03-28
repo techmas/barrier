@@ -3,6 +3,7 @@ package ru.techmas.barrier.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 
 import ru.techmas.barrier.interfaces.views.AuthView
 import ru.techmas.barrier.presenters.AuthPresenter
@@ -12,6 +13,10 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_auth.*
 import ru.techmas.barrier.utils.Injector
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
+
+
 
 
 class AuthActivity : BaseActivity(), AuthView {
@@ -33,6 +38,15 @@ class AuthActivity : BaseActivity(), AuthView {
         btnGetSmsCode.setOnClickListener { authPresenter.sendSms(etPhone.text.toString()) }
         ivSupport.setOnClickListener { authPresenter.supportClick() }
         etSmsCode.setOnFocusChangeListener { v, hasFocus -> authPresenter.checkCode(etSmsCode.text.toString(), hasFocus)}
+        etSmsCode.setOnEditorActionListener { textView, actionId, keyEvent ->
+            val result = actionId and EditorInfo.IME_MASK_ACTION
+            when (result) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    authPresenter.checkCode(etSmsCode.text.toString(), false)
+                }
+            }
+            false
+        }
     }
 
     @InjectPresenter
