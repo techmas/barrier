@@ -31,5 +31,11 @@
     <string name="lbl_add">Добавить</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="tmp_data">28 января 16:15</string>
+    <string name="tmp_question">Здравствуйте, как добавить новый шлагбаум?</string>
+    <string name="tmp_answer">При добавление нового шлагбаума, необходимо нажать кнопку "Добавить шлагбаум" и вписать все данные о новом шлагбауме</string>
+
+
+
 
 </resources>

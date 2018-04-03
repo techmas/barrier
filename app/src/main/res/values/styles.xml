@@ -26,6 +26,10 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="BlackSmall">
+        <item name="android:textSize">13sp</item>
+    </style>
+
     <style name="PrimaryStandard" parent="WhiteStandard">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
