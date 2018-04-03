@@ -29,7 +29,7 @@ internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), Navigati
 
     fun onOptionsItemSelected(item: MenuItem) {
         when (item.itemId) {
-//            R.id.action_add -> viewState.startActivity(AddBarrierActivity::class.java)
+            R.id.action_add -> viewState.startActivity(AddBarrierActivity::class.java)
         }
     }
 }

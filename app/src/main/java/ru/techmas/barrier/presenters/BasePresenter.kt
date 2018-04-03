@@ -1,5 +1,6 @@
 package ru.techmas.barrier.presenters
 
+import android.util.Log
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
 
@@ -25,7 +26,7 @@ open class BasePresenter<View : MvpView> : MvpPresenter<View>() {
     }
 
     protected fun handleError(throwable: Throwable?) {
-
+        Log.d(TAG, "Error" + throwable.toString())
     }
 
     override fun onDestroy() {

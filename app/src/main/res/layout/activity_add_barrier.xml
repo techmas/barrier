@@ -1,7 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/light_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_big_margin"
+        android:layout_marginLeft="@dimen/activity_middle_margin"
+        android:layout_marginRight="@dimen/activity_middle_margin"
+        android:background="@drawable/rounded_background"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_very_big_margin">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilName"
+                style="@style/LightInput">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:hint="@string/name_barrier"
+                    style="@style/LightEditText" />
+
+            </android.support.design.widget.TextInputLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/tvName"-->
+                <!--style="@style/PrimaryLightStandard"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/name_barrier" />-->
+
+            <ImageView
+                android:id="@+id/ivSettingsName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_big_margin"
+                android:layout_toEndOf="@+id/tilName"
+                android:padding="@dimen/activity_small_margin"
+                android:visibility="gone"
+                android:src="@drawable/edit_1" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_big_margin"
+            android:src="@drawable/addphoto" />
+
+        <TextView
+            style="@style/WhiteStandard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_small_margin"
+            android:gravity="center"
+            android:text="@string/lbl_phone_number_opening_barrier" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            style="@style/editTextRound"
+            android:layout_width="230dp"
+            android:maxLines="1"
+            android:inputType="phone"
+            android:hint="@string/lbl_phone_number"
+            android:textColorHint="@color/color_separate_line" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_middle_margin"
+            android:layout_marginTop="@dimen/activity_big_margin">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilAddress"
+                style="@style/LightInput">
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    android:hint="@string/address_barrier"
+                    style="@style/LightEditText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--<TextView-->
+                <!--android:id="@+id/tvAddress"-->
+                <!--style="@style/PrimaryLightStandard"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/address_barrier" />-->
+
+            <ImageView
+                android:id="@+id/ivSettingsAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_big_margin"
+                android:layout_toEndOf="@+id/tilAddress"
+                android:padding="@dimen/activity_small_margin"
+                android:visibility="gone"
+                android:src="@drawable/edit_1" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAdd"
+        style="@style/BlueButton"
+        android:layout_width="120dp"
+        android:layout_marginTop="@dimen/activity_very_big_margin"
+        android:text="@string/lbl_add" />
+
+</LinearLayout>
+
 

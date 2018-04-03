@@ -48,6 +48,7 @@ package="ru.techmas.barrier">
     <activity android:name=".activities.SupportActivity" />
     <activity android:name=".activities.SettingsActivity" />
     <activity android:name=".activities.BarrierDetailActivity" />
-    <activity android:name="ru.techmas.barrier.activities.AddBarrierActivity"/>
+    <activity android:name=".activities.AddBarrierActivity"
+        android:theme="@style/DarkTheme" />
 </application>
 </manifest>

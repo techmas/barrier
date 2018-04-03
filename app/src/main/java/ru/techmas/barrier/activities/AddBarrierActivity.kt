@@ -6,24 +6,31 @@ import android.os.Bundle
 
 import ru.techmas.barrier.interfaces.views.AddBarrierView
 import ru.techmas.barrier.presenters.AddBarrierPresenter
-import ru.techmas.barrier.activities.BaseActivity
 import ru.techmas.barrier.R
 
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.activity_add_barrier.*
 
-import ru.techmas.barrier.App
 import ru.techmas.barrier.utils.Injector
 
 
-class AddBarrierActivity : BaseActivity(), AddBarrierView {
+class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
+
+    override fun close() {
+        finish()
+    }
+
     override fun setupUI() {
 
     }
 
     override fun setupUX() {
-
+        btnAdd.setOnClickListener { addBarrierPresenter.addBarrier(
+                etName.text.toString(),
+                etAddress.text.toString(),
+                etPhone.text.toString()) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

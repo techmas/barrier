@@ -25,4 +25,12 @@ interface Barrier {
                     @Field("key") token: String,
                     @Field("command") command: String,
                     @Field("barrier_id") barrier: Int): Observable<StateResponse>
+
+    @FormUrlEncoded
+    @POST("api.php")
+    fun addBarrier(@Field("login") number: String,
+                   @Field("key") token: String,
+                   @Field("addBarrier") command: String,
+                   @Field("tel_gsm") phone: String,
+                   @Field("name") name: String): Observable<StateResponse>
 }
