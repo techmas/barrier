@@ -12,9 +12,9 @@ import android.view.MenuItem
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.tabs_toolbar.*
 
 import ru.techmas.barrier.R
-import ru.techmas.barrier.fragments.BaseFragment
 import ru.techmas.barrier.interfaces.views.MainView
 import ru.techmas.barrier.presenters.MainActivityPresenter
 import ru.techmas.barrier.utils.Injector
@@ -34,13 +34,17 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun setupUI() {
+        toolbar.setNavigationIcon(R.drawable.ic_menu_24dp)
         setSupportActionBar(toolbar)
+//
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar!!.setHomeAsUpIndicator(resources.getDrawable(R.drawable.ic_menu_24dp))
     }
 
     override fun setupUX() {
-//        setSupportActionBar(toolbar)
         toggle = ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        toggle.syncState()
         drawer.addDrawerListener(toggle)
         setDrawerState(true)
         navigationView.setNavigationItemSelectedListener(mainPresenter)

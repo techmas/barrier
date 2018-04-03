@@ -27,7 +27,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="@dimen/activity_middle_margin"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/support_blue" />
+                android:src="@drawable/addphoto" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -66,8 +66,13 @@
 
             <Button
                 android:id="@+id/btnOpen"
-                style="@style/WhiteButtonOpen"
-                android:layout_marginLeft="@dimen/activity_middle_margin"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:minHeight="35dp"
+                android:maxHeight="35dp"
+                android:background="@drawable/rounded_button_white"
+                android:layout_marginStart="@dimen/activity_middle_margin"
+                android:layout_marginBottom="@dimen/activity_middle_margin"
                 android:layout_centerVertical="true"
                 android:text="@string/lbl_open" />
 

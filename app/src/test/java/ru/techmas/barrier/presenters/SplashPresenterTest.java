@@ -11,10 +11,8 @@ import ru.techmas.barrier.activities.MainActivity;
 import ru.techmas.barrier.api.RestApi;
 import ru.techmas.barrier.interfaces.views.SplashView;
 import ru.techmas.barrier.interfaces.views.SplashView$$State;
-import ru.techmas.barrier.utils.presenter.TokenHelper;
 
 import static org.mockito.Mockito.verify;
-import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
  * Date: 04.06.2017
@@ -32,26 +30,23 @@ public class SplashPresenterTest {
     SplashView$$State splashViewState;
     @Mock
     RestApi restApi;
-    @Mock
-    TokenHelper tokenHelper;
 
     private SplashPresenter splashPresenter;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        splashPresenter = new SplashPresenter(restApi, tokenHelper);
+//        splashPresenter = new SplashPresenter(restApi, tokenHelper);
         splashPresenter.attachView(splashView);
         splashPresenter.setViewState(splashViewState);
     }
 
     @Test
     public void startNextTest() {
-        when(tokenHelper.isFirstRun()).thenReturn(true);
+//        when(tokenHelper.isFirstRun()).thenReturn(true);
         splashPresenter.startNext();
         verify(splashViewState).showErrorConnection(false);
         verify(splashViewState).startActivity(MainActivity.class);
-        // TODO: 12.06.2017  
     }
 
 }

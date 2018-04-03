@@ -44,7 +44,7 @@ package="ru.techmas.barrier">
         android:theme="@style/NoToolbarTheme" />
     <activity
         android:name=".activities.MainActivity"
-        android:theme="@style/NoToolbarTheme" />
+        android:theme="@style/MainActivityTheme" />
     <activity android:name=".activities.SupportActivity" />
     <activity android:name=".activities.SettingsActivity" />
     <activity android:name=".activities.BarrierDetailActivity" />

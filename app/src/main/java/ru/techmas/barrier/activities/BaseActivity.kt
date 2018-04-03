@@ -79,10 +79,10 @@ abstract class BaseActivity : MvpAppCompatActivity(), NavigatorActivityView, Bas
         overridePendingTransition(R.anim.no_animation, R.anim.no_animation)
     }
 
-    @SuppressWarnings("unchecked")
-    protected fun <T : View> bindView(@IdRes id: Int): T {
-        return findViewById(id)
-    }
+//    @SuppressWarnings("unchecked")
+//    protected fun <T : View> bindView(@IdRes id: Int): T {
+//        return findViewById(id)
+//    }
 
     protected fun bindColor(@ColorRes id: Int): Int {
         return ContextCompat.getColor(this, id)
