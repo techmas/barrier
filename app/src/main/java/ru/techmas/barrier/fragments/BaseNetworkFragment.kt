@@ -27,7 +27,7 @@ abstract class BaseNetworkFragment : BaseFragment(), NetworkView {
     private val ltError: ViewGroup? = null
     private val tvError: TextView? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 

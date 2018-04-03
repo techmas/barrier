@@ -4,6 +4,7 @@ import android.support.design.widget.NavigationView
 import android.view.MenuItem
 import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.R
+import ru.techmas.barrier.activities.AddBarrierActivity
 import ru.techmas.barrier.activities.SettingsActivity
 import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.fragments.MainFragment
@@ -24,5 +25,11 @@ internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), Navigati
         }
         viewState.closeDrawers()
         return false
+    }
+
+    fun onOptionsItemSelected(item: MenuItem) {
+        when (item.itemId) {
+//            R.id.action_add -> viewState.startActivity(AddBarrierActivity::class.java)
+        }
     }
 }

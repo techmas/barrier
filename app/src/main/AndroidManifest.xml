@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="ru.techmas.barrier">
 
@@ -23,7 +24,7 @@ package="ru.techmas.barrier">
 <application
     android:name=".App"
     android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
+    android:icon="@mipmap/appicon"
     android:label="@string/app_name"
     android:largeHeap="true"
     android:launchMode="singleTop"
@@ -43,9 +44,10 @@ package="ru.techmas.barrier">
         android:theme="@style/NoToolbarTheme" />
     <activity
         android:name=".activities.MainActivity"
-        android:theme="@style/NoToolbarTheme" />
+        android:theme="@style/MainActivityTheme" />
     <activity android:name=".activities.SupportActivity" />
     <activity android:name=".activities.SettingsActivity" />
-    <activity android:name="ru.techmas.barrier.activities.BarrierDetailActivity"></activity>
+    <activity android:name=".activities.BarrierDetailActivity" />
+    <activity android:name="ru.techmas.barrier.activities.AddBarrierActivity"/>
 </application>
 </manifest>

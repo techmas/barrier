@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ActionBarThemeOverlay"
+            app:titleTextColor="@color/light_background"
+            app:navigationIcon="@drawable/ic_menu_24dp"
+            app:theme="@style/ActionBarThemeOverlay"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <!--android:layout_height="?attr/actionBarSize"-->
+
+            <!--<FrameLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+                <!--android:background="@drawable/toolbar_badge">-->
+
+                <!--<TextView-->
+                    <!--android:visibility="gone"-->
+                    <!--android:id="@+id/tvToolbarReedem"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingBottom="@dimen/activity_very_small_margin"-->
+                    <!--android:paddingLeft="@dimen/small_margin"-->
+                    <!--android:paddingRight="@dimen/small_margin"-->
+                    <!--android:paddingTop="@dimen/activity_very_small_margin"-->
+                    <!--android:textColor="@color/light_background"/>-->
+
+            <!--</FrameLayout>-->
+
+
+        <!--</android.support.v7.widget.Toolbar>-->
+
+
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tabLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--app:tabBackground="@null"-->
+            <!--app:tabMode="scrollable"/>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/ltContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/viewPager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+</LinearLayout>

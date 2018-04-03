@@ -27,4 +27,5 @@ interface PresenterComponent {
     val settingsPresenter: SettingsPresenter
     val mainFragmentPresenter: MainFragmentPresenter
     val barrierDetailPresenter: BarrierDetailPresenter
+    val addBarrierPresenter: AddBarrierPresenter
 }

@@ -36,23 +36,23 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
     }
 
     protected fun hideKeyboard() {
-        KeyboardHelper.hide(activity)
+        activity?.let { KeyboardHelper.hide(it) }
     }
 
     override fun startActivity(activityClass: Class<out BaseActivity>) {
-        Navigator.startActivity(activity, activityClass, false)
+        activity?.let { Navigator.startActivity(it, activityClass, false) }
     }
 
     override fun startActivityForResult(activityClass: Class<out BaseActivity>, requestCode: Int) {
-        Navigator.startActivityForResult(activity, activityClass, requestCode)
+        activity?.let { Navigator.startActivityForResult(it, activityClass, requestCode) }
     }
 
     override fun startFragment(baseFragment: BaseFragment, addToBackStack: Boolean) {
-        Navigator.startFragment(baseFragment, activity.supportFragmentManager, R.id.ltContainer, addToBackStack)
+        activity?.let { Navigator.startFragment(baseFragment, it.supportFragmentManager, R.id.ltContainer, addToBackStack) }
     }
 
     override fun startFragment(baseFragment: BaseFragment) {
-        Navigator.startFragment(baseFragment, activity.supportFragmentManager, R.id.ltContainer)
+        activity?.let { Navigator.startFragment(baseFragment, it.supportFragmentManager, R.id.ltContainer) }
     }
 
     protected fun hideView(view: View) {
@@ -76,16 +76,16 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
 //        return super.onCreateAnimation(transit, enter, nextAnim)
 //    }
 
-    protected fun <T : View> bindView(@IdRes id: Int): T {
-        return rootView!!.findViewById(id)
-    }
+//    protected fun <T : View> bindView(@IdRes id: Int): T {
+//        return rootView!!.findViewById(id)
+//    }
 
     protected fun bindDimen(@DimenRes id: Int): Int {
         return resources.getDimension(id).toInt()
     }
 
     protected fun bindColor(@ColorRes id: Int): Int {
-        return ContextCompat.getColor(context, id)
+        return ContextCompat.getColor(context!!, id)
     }
 
     protected fun bindString(@StringRes id: Int): String {

@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
-import de.hdodenhof.circleimageview.CircleImageView
 import ru.techmas.barrier.R
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.Barriers
@@ -38,21 +36,29 @@ class BarriersAdapter(var context: Context, items: Barriers)
                 tvAddress.text = address
                 tvNumber.text = number
 //                avatar?.let { ImageLoader.load(context, civAvatar, it) }
-                btnOpen.setOnClickListener { onBarrierClickListener.onClickOpen(item) }
+                btnOpen.setOnClickListener { view -> openClick(view, item) }
                 ivCamera.setOnClickListener { onBarrierClickListener.onClickCamera(item) }
                 ivSettings.setOnClickListener { onBarrierClickListener.onClickSettings(item) }
             }
         }
     }
 
+    private fun openClick(view: View, item: Barrier) {
+        onBarrierClickListener.onClickOpen(item)
+        with(view as TextView) {
+            view.setBackground(context.resources.getDrawable(R.drawable.rounded_button_green))
+            view.setTextColor(context.resources.getColor(R.color.light_background))
+        }
+    }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        var ltContainer: RelativeLayout = itemView.findViewById(R.id.ltContainer)
 //        var ivPhoto: CircleImageView = itemView.findViewById(R.id.ivPhoto)
-        var tvName = itemView.findViewById<TextView>(R.id.tvName)!!
-        var tvNumber = itemView.findViewById<TextView>(R.id.tvNumber)!!
-        var tvAddress = itemView.findViewById<TextView>(R.id.tvAddress)!!
-        var btnOpen = itemView.findViewById<TextView>(R.id.btnOpen)!!
-        var ivCamera  = itemView.findViewById<ImageView>(R.id.ivCamera)!!
-        var ivSettings  = itemView.findViewById<ImageView>(R.id.ivSettings)!!
+        var tvName = itemView.findViewById(R.id.tvName) as TextView
+        var tvNumber = itemView.findViewById(R.id.tvNumber) as TextView
+        var tvAddress = itemView.findViewById(R.id.tvAddress) as TextView
+        var btnOpen = itemView.findViewById(R.id.btnOpen) as TextView
+        var ivCamera  = itemView.findViewById(R.id.ivCamera) as ImageView
+        var ivSettings  = itemView.findViewById(R.id.ivSettings) as ImageView
     }
 }

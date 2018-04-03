@@ -49,6 +49,8 @@
         <EditText
             android:id="@+id/etPhone"
             style="@style/editTextRound"
+            android:inputType="phone|number"
+            android:maxLines="1"
             android:layout_width="230dp"
             android:hint="@string/lbl_phone_number"
             android:textColorHint="@color/color_separate_line" />
@@ -87,8 +89,10 @@
             <EditText
                 android:id="@+id/etSmsCode"
                 style="@style/editTextRound"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
                 android:layout_width="100dp"
-                android:hint="@string/tmp_code"
                 android:textColorHint="@color/colorPrimary" />
 
         </LinearLayout>
