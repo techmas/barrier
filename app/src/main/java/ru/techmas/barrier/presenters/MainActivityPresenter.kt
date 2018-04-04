@@ -1,8 +1,11 @@
 package ru.techmas.barrier.presenters
 
+import android.app.Activity
+import android.content.Intent
 import android.support.design.widget.NavigationView
 import android.view.MenuItem
 import com.arellomobile.mvp.InjectViewState
+import ru.techmas.barrier.Const
 import ru.techmas.barrier.R
 import ru.techmas.barrier.activities.AddBarrierActivity
 import ru.techmas.barrier.activities.SettingsActivity
@@ -29,7 +32,15 @@ internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), Navigati
 
     fun onOptionsItemSelected(item: MenuItem) {
         when (item.itemId) {
-            R.id.action_add -> viewState.startActivity(AddBarrierActivity::class.java)
+            R.id.action_add -> viewState.startActivityForResult(AddBarrierActivity::class.java, Const.ActivityRequest.ADD_BARRIER)
         }
     }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK)
+            when (requestCode) {
+                Const.ActivityRequest.ADD_BARRIER -> viewState.startFragment(MainFragment.newInstance())
+            }
+    }
+
 }

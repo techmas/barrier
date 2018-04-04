@@ -1,5 +1,6 @@
 package ru.techmas.barrier.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -19,6 +20,7 @@ import ru.techmas.barrier.utils.Injector
 class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
 
     override fun close() {
+        setResult(Activity.RESULT_OK)
         finish()
     }
 

@@ -19,7 +19,7 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
     fun addBarrier(name: String, address: String, phone: String) {
         val request = restApi.barrier.addBarrier(
                 preferenceHelper.number!!,
-                preferenceHelper.token!!, "", name, phone)
+                preferenceHelper.token!!, "", phone, address, name)
                 .compose(RxUtils.httpSchedulers())
                 .subscribe({ successAddBarrier(it) }, { handleError(it) })
         unSubscribeOnDestroy(request)
@@ -28,4 +28,10 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
     private fun successAddBarrier(response: StateResponse) {
         viewState.close()
     }
+
+    override fun handleError(throwable: Throwable?) {
+        super.handleError(throwable)
+        viewState.close()
+    }
+
 }

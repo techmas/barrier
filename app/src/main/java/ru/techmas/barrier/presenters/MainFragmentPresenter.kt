@@ -1,6 +1,8 @@
 package ru.techmas.barrier.presenters
 
 
+import android.app.Activity
+import android.content.Intent
 import ru.techmas.barrier.interfaces.views.MainFragmentView
 import ru.techmas.barrier.interfaces.views.MainView
 
@@ -59,4 +61,11 @@ internal constructor(
     private fun successGetData(response: Barriers) {
         viewState.showData(response)
     }
+
+//    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        if (resultCode == Activity.RESULT_OK)
+//            when (requestCode) {
+//                Const.ActivityRequest.ADD_BARRIER -> getBarriers()
+//            }
+//    }
 }

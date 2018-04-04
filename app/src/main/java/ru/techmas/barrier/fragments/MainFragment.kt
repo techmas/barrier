@@ -1,5 +1,6 @@
 package ru.techmas.barrier.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -38,6 +39,11 @@ class MainFragment : BaseFragment(), MainFragmentView {
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter
     }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        mainFragmentPresenter.onActivityResult(requestCode, resultCode, data)
+//    }
 
     @InjectPresenter
     lateinit var mainFragmentPresenter: MainFragmentPresenter

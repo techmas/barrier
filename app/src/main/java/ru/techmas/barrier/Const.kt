@@ -14,6 +14,10 @@ class Const {
         val AUTHORIZATION = "Authorization"
     }
 
+    object ActivityRequest {
+        val ADD_BARRIER = 1001
+    }
+
     object State {
         val OK = 1
         val ERROR = 0

@@ -2,6 +2,7 @@ package ru.techmas.barrier.activities
 
 
 import android.accounts.Account
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -83,6 +84,11 @@ class MainActivity : BaseActivity(), MainView {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.barrier_toolbar_menu, menu)
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        mainPresenter.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
