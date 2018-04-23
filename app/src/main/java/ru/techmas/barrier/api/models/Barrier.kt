@@ -13,10 +13,10 @@ import com.google.gson.annotations.SerializedName
  */
 
 data class Barrier(
-    var id: Int,
-    var address: String,
-    var number: String,
+    var id: Int = 0,
+    var address: String = "",
+    var number: String = "",
     @SerializedName("user_info")
-    var name: String,
-    var old: String
+    var name: String = "",
+    var old: String = ""
 )

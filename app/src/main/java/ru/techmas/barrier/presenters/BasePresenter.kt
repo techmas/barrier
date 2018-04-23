@@ -15,9 +15,6 @@ import io.reactivex.disposables.Disposable
 
 open class BasePresenter<View : MvpView> : MvpPresenter<View>() {
 
-//    open var restApi: RestApi? = null
-//    open var tokenHelper: TokenHelper? = null
-
     open val TAG = javaClass.simpleName
     private val compositeDisposable = CompositeDisposable()
 

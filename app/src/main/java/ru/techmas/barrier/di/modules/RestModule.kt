@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import ru.techmas.barrier.App
 import ru.techmas.barrier.api.RestApi
+import ru.techmas.barrier.models.AppData
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
 /**
@@ -24,10 +25,15 @@ class RestModule(app: App) {
 
     private val preferenceHelper: PreferenceHelper = PreferenceHelper(PreferenceManager.getDefaultSharedPreferences(app))
     private val restApi: RestApi = RestApi()
+    private val appData: AppData = AppData()
 
     @Singleton
     @Provides
     internal fun provideRestApi() = restApi
+
+    @Singleton
+    @Provides
+    internal fun provideAppData() = appData
 
     @Singleton
     @Provides

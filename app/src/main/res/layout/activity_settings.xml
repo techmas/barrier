@@ -47,7 +47,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btnDelete"
+            android:id="@+id/btnLogout"
             style="@style/RedButton"
             android:layout_width="180dp"
             android:layout_marginBottom="@dimen/activity_ultra_big_margin"

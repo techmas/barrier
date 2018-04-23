@@ -11,16 +11,19 @@ import ru.techmas.barrier.R
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.activity_barrier_detail.*
 
 import ru.techmas.barrier.utils.Injector
 
 
 class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
+
     override fun setupUI() {
 
     }
 
     override fun setupUX() {
+        btnDelete.setOnClickListener { barrierDetailPresenter.removeBarrier() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

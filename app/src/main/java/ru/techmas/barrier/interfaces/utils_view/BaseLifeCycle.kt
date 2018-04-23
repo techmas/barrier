@@ -9,8 +9,6 @@ package ru.techmas.barrier.interfaces.utils_view
  * *         You can contact me at me@alexbykov.ru
  */
 interface BaseLifeCycle {
-
     fun setupUI()
-
     fun setupUX()
 }

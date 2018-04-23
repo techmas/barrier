@@ -21,6 +21,8 @@ import ru.techmas.barrier.utils.Injector
 
 class MainFragment : BaseFragment(), MainFragmentView {
 
+    private var adapter: BarriersAdapter? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(LAYOUT, container, false)
@@ -34,13 +36,18 @@ class MainFragment : BaseFragment(), MainFragmentView {
     }
 
     override fun showData(barriers: Barriers) {
-        val adapter = BarriersAdapter(context!!, barriers)
-        adapter.onBarrierClickListener = mainFragmentPresenter
+        adapter = BarriersAdapter(context!!, barriers)
+        adapter!!.onBarrierClickListener = mainFragmentPresenter
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onResume() {
+        super.onResume()
+        adapter?.notifyDataSetChanged()
+    }
+
+    //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 //        super.onActivityResult(requestCode, resultCode, data)
 //        mainFragmentPresenter.onActivityResult(requestCode, resultCode, data)
 //    }

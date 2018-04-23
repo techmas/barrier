@@ -35,6 +35,10 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
         Injector.viewComponent?.inject(this)
     }
 
+    override fun close() {
+        activity?.finish()
+    }
+
     protected fun hideKeyboard() {
         activity?.let { KeyboardHelper.hide(it) }
     }

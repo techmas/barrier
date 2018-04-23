@@ -21,4 +21,5 @@ interface NavigatorActivityView : BaseView {
     fun startActivityForResult(activityClass: Class<out BaseActivity>, requestCode: Int)
     fun startFragment(baseFragment: BaseFragment, addToBackStack: Boolean)
     fun startFragment(baseFragment: BaseFragment)
+    fun close()
 }

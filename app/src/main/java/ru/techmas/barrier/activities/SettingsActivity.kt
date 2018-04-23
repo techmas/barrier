@@ -11,6 +11,7 @@ import ru.techmas.barrier.R
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.activity_settings.*
 
 import ru.techmas.barrier.utils.Injector
 
@@ -18,16 +19,15 @@ import ru.techmas.barrier.utils.Injector
 class SettingsActivity : BaseSingleActivity(), SettingsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         setContentView(LAYOUT)
+        super.onCreate(savedInstanceState)
     }
 
     override fun setupUI() {
-
     }
 
     override fun setupUX() {
-
+        btnLogout.setOnClickListener { settingsPresenter.logout() }
     }
 
     @InjectPresenter

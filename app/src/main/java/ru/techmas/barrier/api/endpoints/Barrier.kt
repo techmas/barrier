@@ -21,6 +21,12 @@ interface Barrier {
 
     @FormUrlEncoded
     @POST("api.php")
+    fun getCameras(@Field("login") number: String,
+                    @Field("key") token: String,
+                    @Field("cam") barrier: String): Observable<StateResponse>
+
+    @FormUrlEncoded
+    @POST("api.php")
     fun openBarrier(@Field("login") number: String,
                     @Field("key") token: String,
                     @Field("command") command: String,
@@ -33,5 +39,23 @@ interface Barrier {
                    @Field("addBarrier") command: String,
                    @Field("tel_gsm") phone: String,
                    @Field("address") address: String,
-                   @Field("user_info") name: String): Observable<StateResponse>
+                   @Field("user_info") name: String): Observable<ru.techmas.barrier.api.models.Barrier>
+
+    @FormUrlEncoded
+    @POST("api.php")
+    fun updateBarrier(@Field("login") number: String,
+                   @Field("key") token: String,
+                   @Field("UpBarrier") command: String,
+                   @Field("barrier_id") barrier: Int,
+                   @Field("name") phone: String,
+                   @Field("point_x") pointX: Double,
+                   @Field("point_y") pointY: Double,
+                   @Field("address") address: String,
+                   @Field("user_info") name: String): Observable<Barrier>
+
+    @FormUrlEncoded
+    @POST("api.php")
+    fun removeBarrier(@Field("login") number: String,
+                   @Field("key") token: String,
+                   @Field("rmBarrier") barrier: Int): Observable<StateResponse>
 }

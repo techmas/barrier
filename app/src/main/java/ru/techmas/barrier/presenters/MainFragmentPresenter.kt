@@ -15,6 +15,7 @@ import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.Barriers
 import ru.techmas.barrier.api.models.StateResponse
+import ru.techmas.barrier.models.AppData
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
@@ -25,6 +26,7 @@ import javax.inject.Inject
 class MainFragmentPresenter @Inject
 internal constructor(
         private val restApi: RestApi,
+        private val appData: AppData,
         private val preferenceHelper: PreferenceHelper) :
         BasePresenter<MainFragmentView>(), BarriersAdapter.OnBarrierClickListener {
 
@@ -41,6 +43,7 @@ internal constructor(
     }
 
     override fun onClickSettings(item: Barrier) {
+        appData.barrier = item
         viewState.startActivity(BarrierDetailActivity::class.java)
     }
 
@@ -59,6 +62,7 @@ internal constructor(
     }
 
     private fun successGetData(response: Barriers) {
+        appData.barriers = response
         viewState.showData(response)
     }
 

@@ -42,6 +42,10 @@ abstract class BaseActivity : MvpAppCompatActivity(), NavigatorActivityView, Bas
         setupUX()
     }
 
+    override fun close() {
+        finish()
+    }
+
     protected fun hideKeyboard() {
         KeyboardHelper.hide(this)
     }
