@@ -35,5 +35,6 @@
     <string name="tmp_question">Здравствуйте, как добавить новый шлагбаум?</string>
     <string name="tmp_answer">При добавление нового шлагбаума, необходимо нажать кнопку "Добавить шлагбаум" и вписать все данные о новом шлагбауме</string>
     <string name="add">Добавить</string>
+    <string name="save">Сохранить</string>
 
 </resources>

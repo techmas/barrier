@@ -39,7 +39,7 @@ interface Barrier {
                    @Field("addBarrier") command: String,
                    @Field("tel_gsm") phone: String,
                    @Field("address") address: String,
-                   @Field("user_info") name: String): Observable<ru.techmas.barrier.api.models.Barrier>
+                   @Field("user_info") name: String): Observable<StateResponse>
 
     @FormUrlEncoded
     @POST("api.php")
@@ -47,11 +47,11 @@ interface Barrier {
                    @Field("key") token: String,
                    @Field("UpBarrier") command: String,
                    @Field("barrier_id") barrier: Int,
-                   @Field("name") phone: String,
+                   @Field("name") name: String,
                    @Field("point_x") pointX: Double,
                    @Field("point_y") pointY: Double,
                    @Field("address") address: String,
-                   @Field("user_info") name: String): Observable<Barrier>
+                   @Field("user_info") userInfo: String): Observable<StateResponse>
 
     @FormUrlEncoded
     @POST("api.php")

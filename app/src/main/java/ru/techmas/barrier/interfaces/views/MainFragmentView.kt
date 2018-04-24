@@ -7,4 +7,5 @@ import ru.techmas.barrier.interfaces.utils_view.NavigatorActivityView
 interface MainFragmentView : BaseView, NavigatorActivityView {
 
     fun showData(barriers: Barriers)
+    fun updateData()
 }

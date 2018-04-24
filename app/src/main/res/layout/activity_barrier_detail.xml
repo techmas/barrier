@@ -23,50 +23,78 @@
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_middle_margin">
-
-                <TextView
-                    style="@style/PrimaryStandard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/name_barrier" />
-
-                <ImageView
-                    android:id="@+id/ivSettingsName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/activity_big_margin"
-                    android:padding="@dimen/activity_small_margin"
-                    android:src="@drawable/edit_2" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    style="@style/PrimaryStandard"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/etName"
+                    style="@style/StandardEditText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/address_barrier" />
-
-                <ImageView
-                    android:id="@+id/ivSettingsAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:padding="@dimen/activity_small_margin"
-                    android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/activity_big_margin"
-                    android:src="@drawable/edit_2" />
+                    android:hint="@string/name_barrier" />
+            </android.support.design.widget.TextInputLayout>
 
-            </RelativeLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    style="@style/StandardEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/activity_big_margin"
+                    android:hint="@string/address_barrier" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/activity_middle_margin">-->
+
+            <!--<TextView-->
+            <!--style="@style/PrimaryStandard"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/name_barrier" />-->
+
+            <!--<ImageView-->
+            <!--android:visibility="invisible"-->
+            <!--android:id="@+id/ivSettingsName"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/activity_big_margin"-->
+            <!--android:padding="@dimen/activity_small_margin"-->
+            <!--android:src="@drawable/edit_2" />-->
+
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+            <!--style="@style/PrimaryStandard"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/address_barrier" />-->
+
+            <!--<ImageView-->
+            <!--android:visibility="invisible"-->
+            <!--android:id="@+id/ivSettingsAddress"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:padding="@dimen/activity_small_margin"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/activity_big_margin"-->
+            <!--android:src="@drawable/edit_2" />-->
+
+            <!--</RelativeLayout>-->
 
         </LinearLayout>
 
@@ -80,8 +108,8 @@
             style="@style/PrimaryStandard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_big_margin"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_big_margin"
             android:text="@string/lvl_open_beside" />
 
         <CheckBox
@@ -91,7 +119,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/activity_big_margin"
             android:buttonTint="@color/colorPrimary"
-            android:checked="true"/>
+            android:checked="true" />
     </RelativeLayout>
 
     <include layout="@layout/separate_line" />
@@ -113,10 +141,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/tvOldEquipment"
+            android:layout_alignBaseline="@+id/tvOldEquipment"
             android:layout_margin="@dimen/activity_small_margin"
-            android:src="@drawable/attention"
-            android:layout_alignBaseline="@+id/tvOldEquipment"/>
+            android:layout_toLeftOf="@+id/tvOldEquipment"
+            android:src="@drawable/attention" />
 
         <Button
             android:id="@+id/btnModernization"
@@ -136,10 +164,10 @@
             android:id="@+id/btnDelete"
             style="@style/RedButton"
             android:layout_width="180dp"
-            android:layout_marginBottom="@dimen/activity_ultra_big_margin"
-            android:text="@string/delete_barrier"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_ultra_big_margin"
+            android:text="@string/delete_barrier" />
 
     </RelativeLayout>
 </LinearLayout>

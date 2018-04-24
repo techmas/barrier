@@ -1,9 +1,13 @@
 package ru.techmas.barrier.presenters
 
 
+import android.view.MenuItem
 import ru.techmas.barrier.interfaces.views.AddBarrierView
 
 import com.arellomobile.mvp.InjectViewState
+import ru.techmas.barrier.Const
+import ru.techmas.barrier.R
+import ru.techmas.barrier.activities.AddBarrierActivity
 import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.StateResponse
@@ -27,8 +31,7 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
         unSubscribeOnDestroy(request)
     }
 
-    private fun successAddBarrier(response: Barrier) {
-        appData.barriers.add(response)
+    private fun successAddBarrier(response: StateResponse) {
         viewState.close()
     }
 
@@ -36,5 +39,4 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
         super.handleError(throwable)
         viewState.close()
     }
-
 }

@@ -36,6 +36,13 @@ class BarriersAdapter(var context: Context, items: Barriers)
                 tvAddress.text = address
                 tvNumber.text = number
 //                avatar?.let { ImageLoader.load(context, civAvatar, it) }
+                btnOpen.isSelected = opened
+//                btnOpen.setBackgroundColor(
+//                        if (opened) context.resources.getColor(R.color.colorOpen)
+//                        else context.resources.getColor(R.color.light_background))
+//                btnOpen.setTextColor(
+//                        if (opened) context.resources.getColor(R.color.light_background)
+//                        else context.resources.getColor(R.color.colorPrimaryDark))
                 btnOpen.setOnClickListener { view -> openClick(view, item) }
                 ivCamera.setOnClickListener { onBarrierClickListener.onClickCamera(item) }
                 ivSettings.setOnClickListener { onBarrierClickListener.onClickSettings(item) }
@@ -52,13 +59,13 @@ class BarriersAdapter(var context: Context, items: Barriers)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        var ltContainer: RelativeLayout = itemView.findViewById(R.id.ltContainer)
+        //        var ltContainer: RelativeLayout = itemView.findViewById(R.id.ltContainer)
 //        var ivPhoto: CircleImageView = itemView.findViewById(R.id.ivPhoto)
         var tvName = itemView.findViewById(R.id.tvName) as TextView
         var tvNumber = itemView.findViewById(R.id.tvNumber) as TextView
         var tvAddress = itemView.findViewById(R.id.tvAddress) as TextView
         var btnOpen = itemView.findViewById(R.id.btnOpen) as TextView
-        var ivCamera  = itemView.findViewById(R.id.ivCamera) as ImageView
-        var ivSettings  = itemView.findViewById(R.id.ivSettings) as ImageView
+        var ivCamera = itemView.findViewById(R.id.ivCamera) as ImageView
+        var ivSettings = itemView.findViewById(R.id.ivSettings) as ImageView
     }
 }

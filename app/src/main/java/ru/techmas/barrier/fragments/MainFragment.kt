@@ -44,10 +44,13 @@ class MainFragment : BaseFragment(), MainFragmentView {
 
     override fun onResume() {
         super.onResume()
-        adapter?.notifyDataSetChanged()
+        mainFragmentPresenter.getBarriers()
     }
 
     //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun updateData() {
+        adapter?.notifyDataSetChanged()
+    }
 //        super.onActivityResult(requestCode, resultCode, data)
 //        mainFragmentPresenter.onActivityResult(requestCode, resultCode, data)
 //    }

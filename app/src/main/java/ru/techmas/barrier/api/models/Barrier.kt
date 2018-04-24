@@ -18,5 +18,6 @@ data class Barrier(
     var number: String = "",
     @SerializedName("user_info")
     var name: String = "",
-    var old: String = ""
+    var old: String = "",
+    var opened: Boolean = false
 )

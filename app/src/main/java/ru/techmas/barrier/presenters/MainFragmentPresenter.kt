@@ -30,7 +30,12 @@ internal constructor(
         private val preferenceHelper: PreferenceHelper) :
         BasePresenter<MainFragmentView>(), BarriersAdapter.OnBarrierClickListener {
 
+    init {
+//        getBarriers()
+    }
+
     override fun onClickOpen(item: Barrier) {
+        appData.barrier = item
         val request = restApi.barrier.openBarrier(preferenceHelper.number!!, preferenceHelper.token!!, "open", item.id)
                 .compose(RxUtils.httpSchedulers())
                 .subscribe({ successOpenBarrier(it) }, { handleError(it) })
@@ -38,8 +43,10 @@ internal constructor(
     }
 
     private fun successOpenBarrier(response: StateResponse) {
-//        if (response.state == Const.State.OK)
-//            viewState.selectOpen
+        appData.barrier.opened = true
+        if (response.state == Const.State.OK)
+            viewState.updateData()
+//            viewState.selectOpen(appData.barrier)
     }
 
     override fun onClickSettings(item: Barrier) {
@@ -48,10 +55,6 @@ internal constructor(
     }
 
     override fun onClickCamera(item: Barrier) {
-    }
-
-    init {
-        getBarriers()
     }
 
     fun getBarriers() {
