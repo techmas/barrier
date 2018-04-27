@@ -22,7 +22,7 @@ open class BasePresenter<View : MvpView> : MvpPresenter<View>() {
         compositeDisposable.add(disposable)
     }
 
-    open fun handleError(throwable: Throwable?) {
+    open fun handleError(throwable: Throwable) {
         Log.d(TAG, "Error" + throwable.toString())
     }
 

@@ -17,10 +17,7 @@ import ru.techmas.barrier.R
 import ru.techmas.barrier.fragments.BaseFragment
 import ru.techmas.barrier.interfaces.utils_view.BaseLifeCycle
 import ru.techmas.barrier.interfaces.utils_view.NavigatorActivityView
-import ru.techmas.barrier.utils.AnimationHelper
-import ru.techmas.barrier.utils.Injector
-import ru.techmas.barrier.utils.KeyboardHelper
-import ru.techmas.barrier.utils.Navigator
+import ru.techmas.barrier.utils.*
 
 /**
  * Created by Alex Bykov on 09.11.2016.
@@ -40,6 +37,10 @@ abstract class BaseActivity : MvpAppCompatActivity(), NavigatorActivityView, Bas
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setupUI()
         setupUX()
+    }
+
+    override fun showError(message: String) {
+        window.decorView.rootView.snack(message)
     }
 
     override fun close() {

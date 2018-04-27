@@ -19,7 +19,7 @@ class MainActivityPresenter @Inject
 internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), NavigationView.OnNavigationItemSelectedListener {
 
     init {
-        viewState.startFragment(MainFragment.newInstance())
+        viewState.startFragment(MainFragment.newInstance(), false)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

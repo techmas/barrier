@@ -7,6 +7,10 @@ package ru.techmas.barrier
 
 class Const {
 
+    object Time {
+        val REPEAT_SMS = 60
+        val OPEN_DELAY: Long = 5
+    }
 
     object Url {
         val API_PRODUCTION = "https://api.privratnik.net:44590/app/"

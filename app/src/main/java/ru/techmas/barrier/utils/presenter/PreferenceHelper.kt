@@ -1,6 +1,8 @@
 package ru.techmas.barrier.utils.presenter
 
 import android.content.SharedPreferences
+import com.google.gson.Gson
+import ru.techmas.barrier.models.Photos
 
 interface IPreferenceHelper
 
@@ -14,6 +16,7 @@ class PreferenceHelper(private val preferences: SharedPreferences) : IPreference
     companion object {
         private const val PREF_TOKEN_API = "tokenAPI"
         private const val PREF_NUMBER = "number"
+        private const val PREF_PHOTOS = "photos"
     }
 
     internal var token: String? = null
@@ -39,6 +42,14 @@ class PreferenceHelper(private val preferences: SharedPreferences) : IPreference
         } else {
             field
         }
+
+    fun savePhotos(photos: Photos) {
+        preferences.edit().putString(PREF_PHOTOS, Gson().toJson(photos)).apply()
+    }
+
+    fun getPhotos(): Photos {
+        return Gson().fromJson(preferences.getString(PREF_PHOTOS, "{}"), Photos::class.java)
+    }
 
     val isFirstRun: Boolean
         get() = !preferences.contains(PREF_TOKEN_API)

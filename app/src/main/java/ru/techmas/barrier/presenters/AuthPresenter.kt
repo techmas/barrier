@@ -46,6 +46,7 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
         response.key?.let {
             preferenceHelper.token = it
             viewState.startActivity(MainActivity::class.java)
+            viewState.close()
         }
     }
 }

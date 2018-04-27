@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import de.hdodenhof.circleimageview.CircleImageView
 import ru.techmas.barrier.R
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.Barriers
+import ru.techmas.barrier.models.Photos
+import ru.techmas.barrier.utils.ImageLoader
 
-class BarriersAdapter(var context: Context, items: Barriers)
+class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos)
     : BaseRecyclerAdapter<Barrier, BarriersAdapter.ViewHolder>(items) {
 
     lateinit var onBarrierClickListener: OnBarrierClickListener
@@ -35,7 +38,9 @@ class BarriersAdapter(var context: Context, items: Barriers)
                 tvName.text = name
                 tvAddress.text = address
                 tvNumber.text = number
-//                avatar?.let { ImageLoader.load(context, civAvatar, it) }
+                if (photos.containsKey(number)) {
+                    ImageLoader.load(context, ivPhoto, photos[number]!!)
+                }
                 btnOpen.isSelected = opened
 //                btnOpen.setBackgroundColor(
 //                        if (opened) context.resources.getColor(R.color.colorOpen)
@@ -52,15 +57,15 @@ class BarriersAdapter(var context: Context, items: Barriers)
 
     private fun openClick(view: View, item: Barrier) {
         onBarrierClickListener.onClickOpen(item)
-        with(view as TextView) {
-            view.setBackground(context.resources.getDrawable(R.drawable.rounded_button_green))
-            view.setTextColor(context.resources.getColor(R.color.light_background))
-        }
+//        with(view as TextView) {
+//            view.setBackground(context.resources.getDrawable(R.drawable.rounded_button_green))
+//            view.setTextColor(context.resources.getColor(R.color.light_background))
+//        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //        var ltContainer: RelativeLayout = itemView.findViewById(R.id.ltContainer)
-//        var ivPhoto: CircleImageView = itemView.findViewById(R.id.ivPhoto)
+        var ivPhoto: CircleImageView = itemView.findViewById(R.id.ivPhoto)
         var tvName = itemView.findViewById(R.id.tvName) as TextView
         var tvNumber = itemView.findViewById(R.id.tvNumber) as TextView
         var tvAddress = itemView.findViewById(R.id.tvAddress) as TextView

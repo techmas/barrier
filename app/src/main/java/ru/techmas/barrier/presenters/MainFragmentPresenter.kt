@@ -1,16 +1,12 @@
 package ru.techmas.barrier.presenters
 
 
-import android.app.Activity
-import android.content.Intent
 import ru.techmas.barrier.interfaces.views.MainFragmentView
-import ru.techmas.barrier.interfaces.views.MainView
 
 import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.Const
 import ru.techmas.barrier.activities.BarrierDetailActivity
 import ru.techmas.barrier.adapters.BarriersAdapter
-import ru.techmas.barrier.adapters.BaseRecyclerAdapter
 import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.Barriers
@@ -45,7 +41,7 @@ internal constructor(
     private fun successOpenBarrier(response: StateResponse) {
         appData.barrier.opened = true
         if (response.state == Const.State.OK)
-            viewState.updateData()
+            viewState.updateData(appData.barrier)
 //            viewState.selectOpen(appData.barrier)
     }
 
@@ -55,6 +51,7 @@ internal constructor(
     }
 
     override fun onClickCamera(item: Barrier) {
+        viewState.showCamera(item)
     }
 
     fun getBarriers() {
@@ -64,9 +61,14 @@ internal constructor(
         unSubscribeOnDestroy(request)
     }
 
+    override fun handleError(throwable: Throwable) {
+        super.handleError(throwable)
+        viewState.showError(throwable.localizedMessage)
+    }
+
     private fun successGetData(response: Barriers) {
         appData.barriers = response
-        viewState.showData(response)
+        viewState.showData(response, appData.photos)
     }
 
 //    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

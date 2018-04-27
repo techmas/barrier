@@ -22,4 +22,5 @@ interface NavigatorActivityView : BaseView {
     fun startFragment(baseFragment: BaseFragment, addToBackStack: Boolean)
     fun startFragment(baseFragment: BaseFragment)
     fun close()
+    fun showError(message: String)
 }

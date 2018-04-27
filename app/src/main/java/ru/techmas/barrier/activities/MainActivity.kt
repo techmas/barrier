@@ -37,6 +37,7 @@ class MainActivity : BaseActivity(), MainView {
     override fun setupUI() {
         toolbar.setNavigationIcon(R.drawable.ic_menu_24dp)
         setSupportActionBar(toolbar)
+        title = getString(R.string.title_main)
 //
 //        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 //        supportActionBar!!.setHomeAsUpIndicator(resources.getDrawable(R.drawable.ic_menu_24dp))

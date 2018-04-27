@@ -20,7 +20,7 @@ constructor(private val restApi: RestApi,
             private val appData: AppData) : BasePresenter<BarrierDetailView>() {
 
     init {
-        viewState.showData(appData.barrier)
+        viewState.showData(appData.barrier, appData.photos)
     }
 
     fun removeBarrier() {

@@ -15,7 +15,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import ru.techmas.barrier.utils.Injector
 
 
-class SupportActivity : BaseActivity(), SupportView {
+class SupportActivity : BaseSingleActivity(), SupportView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

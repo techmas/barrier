@@ -8,9 +8,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_big_margin"
+        android:layout_marginTop="@dimen/activity_middle_margin"
         android:layout_marginLeft="@dimen/activity_middle_margin"
         android:layout_marginRight="@dimen/activity_middle_margin"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"
         android:background="@drawable/rounded_background"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -18,7 +21,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_very_big_margin">
+            android:layout_marginTop="@dimen/activity_middle_margin">
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tilName"
@@ -49,7 +52,8 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_big_margin"
@@ -70,6 +74,7 @@
             android:maxLines="1"
             android:inputType="phone"
             android:hint="@string/lbl_phone_number"
+            android:text="+7"
             android:textColorHint="@color/color_separate_line" />
 
         <RelativeLayout

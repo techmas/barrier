@@ -18,6 +18,7 @@ import ru.techmas.barrier.interfaces.utils_view.NavigatorActivityView
 import ru.techmas.barrier.utils.Injector
 import ru.techmas.barrier.utils.KeyboardHelper
 import ru.techmas.barrier.utils.Navigator
+import ru.techmas.barrier.utils.snack
 
 /**
  * Created by Alex Bykov on 09.11.2016.
@@ -33,6 +34,10 @@ abstract class BaseFragment : MvpAppCompatFragment(), NavigatorActivityView, Bas
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Injector.viewComponent?.inject(this)
+    }
+
+    override fun showError(message: String) {
+        view!!.snack(message)
     }
 
     override fun close() {

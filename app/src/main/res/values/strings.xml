@@ -2,7 +2,7 @@
     <string name="app_name">ПривратникЪ</string>
     <string name="repeat_request">Повторить запрос</string>
     <string name="something_went_wrong">Что-то пошло не так :\'(</string>
-    <string name="repeat_sms_code">Повторить отправку\nSMS-кода через X сек.</string>
+    <string name="repeat_sms_code">Повторить отправку\nSMS-кода через %1$d сек.</string>
     <string name="lbl_your_phone">Ваш номер телефона</string>
     <string name="lbl_get_sms_code">Получить SMS-код</string>
     <string name="lbl_enter_sms_code">Введите SMS-код</string>
@@ -24,6 +24,7 @@
     <string name="lbl_technical_support">Техническая поддержка</string>
     <string name="lbl_launch_demo_training">Запуск демо обучения</string>
     <string name="lbl_right_hand_control">Управление правой рукой</string>
+    <string name="title_main">Управляемые объекты</string>
     <string name="name_barrier">Название шлагбаума</string>
     <string name="address_barrier">Адрес шлагбаума</string>
     <string name="delete_barrier">Удалить шлагбаум</string>
@@ -36,5 +37,8 @@
     <string name="tmp_answer">При добавление нового шлагбаума, необходимо нажать кнопку "Добавить шлагбаум" и вписать все данные о новом шлагбауме</string>
     <string name="add">Добавить</string>
     <string name="save">Сохранить</string>
+    <string name="alert_title">Раздел в разработке</string>
+    <string name="alert_message">Данный раздел появится чуть позже, не переживайте.</string>
+    <string name="permission_info_rationale">Необходимо разрешения для работы приложения</string>
 
 </resources>

@@ -8,22 +8,30 @@ import javax.inject.Inject
 import ru.techmas.barrier.activities.MainActivity
 import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.interfaces.views.SplashView
+import ru.techmas.barrier.models.AppData
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
 
 @InjectViewState
 class SplashPresenter @Inject
-internal constructor(val restApi: RestApi, val preferenceHelper: PreferenceHelper) : BasePresenter<SplashView>() {
+internal constructor(
+        private val restApi: RestApi,
+        private val preferenceHelper: PreferenceHelper,
+        private val appData: AppData)
+    : BasePresenter<SplashView>() {
 
     init {
-        startNext()
+        appData.photos = preferenceHelper.getPhotos()
     }
 
     fun startNext() {
         viewState.showErrorConnection(false)
-        if (preferenceHelper.isFirstRun)
+        if (preferenceHelper.isFirstRun) {
             viewState.startActivity(AuthActivity::class.java)
-        else
+            viewState.close()
+        } else {
             viewState.startActivity(MainActivity::class.java)
+            viewState.close()
+        }
     }
 }

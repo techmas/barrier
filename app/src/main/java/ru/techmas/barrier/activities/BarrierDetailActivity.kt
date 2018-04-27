@@ -15,6 +15,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_barrier_detail.*
 import ru.techmas.barrier.api.models.Barrier
+import ru.techmas.barrier.models.Photos
+import ru.techmas.barrier.utils.ImageLoader
 
 import ru.techmas.barrier.utils.Injector
 
@@ -46,9 +48,11 @@ class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun showData(barrier: Barrier) {
+    override fun showData(barrier: Barrier, photos: Photos) {
         etName.setText(barrier.name)
         etAddress.setText(barrier.address)
+        if (photos.containsKey(barrier.number))
+            ImageLoader.load(this, ivPhoto, photos[barrier.number]!!)
     }
 
     @InjectPresenter

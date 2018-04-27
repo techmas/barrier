@@ -1,6 +1,7 @@
 package ru.techmas.barrier.presenters
 
 
+import android.graphics.Bitmap
 import android.view.MenuItem
 import ru.techmas.barrier.interfaces.views.AddBarrierView
 
@@ -12,6 +13,7 @@ import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.StateResponse
 import ru.techmas.barrier.models.AppData
+import ru.techmas.barrier.utils.CameraHelper
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
@@ -20,9 +22,26 @@ import javax.inject.Inject
 
 @InjectViewState
 class AddBarrierPresenter @Inject
-constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper, val appData: AppData) : BasePresenter<AddBarrierView>() {
+constructor(
+        private val restApi: RestApi,
+        private val preferenceHelper: PreferenceHelper,
+        private val appData: AppData)
+    : BasePresenter<AddBarrierView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener {
+
+    private lateinit var phone: String
+    private lateinit var fileName: String
+
+    override fun errorCamera(message: String) {
+        viewState.showError(message)
+    }
+
+    override fun successCameraPhoto(name: String, bitmap: Bitmap) {
+        fileName = name
+        viewState.showPhoto(bitmap)
+    }
 
     fun addBarrier(name: String, address: String, phone: String) {
+        this.phone = phone
         val request = restApi.barrier.addBarrier(
                 preferenceHelper.number!!,
                 preferenceHelper.token!!, "", phone, address, name)
@@ -32,11 +51,15 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
     }
 
     private fun successAddBarrier(response: StateResponse) {
+        appData.photos[phone] = fileName
+        preferenceHelper.savePhotos(appData.photos)
         viewState.close()
     }
 
-    override fun handleError(throwable: Throwable?) {
+    override fun handleError(throwable: Throwable) {
         super.handleError(throwable)
-        viewState.close()
+        viewState.showError(throwable.localizedMessage)
+//        viewState.close()
     }
+
 }
