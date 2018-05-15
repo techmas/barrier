@@ -1,5 +1,6 @@
 package ru.techmas.barrier.activities
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -28,6 +29,16 @@ class SettingsActivity : BaseSingleActivity(), SettingsView {
 
     override fun setupUX() {
         btnLogout.setOnClickListener { settingsPresenter.logout() }
+        tvSupport.setOnClickListener { startActivity(JivoActivity::class.java) }
+        tvDemo.setOnClickListener { settingsPresenter.showDemo() }
+    }
+
+    override fun showStub() {
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.alert_title))
+                .setMessage(getString(R.string.alert_message))
+                .setPositiveButton("OK") {dialog, which -> dialog.dismiss()}
+                .create().show()
     }
 
     @InjectPresenter

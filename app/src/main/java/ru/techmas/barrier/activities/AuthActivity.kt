@@ -20,8 +20,7 @@ import ru.techmas.barrier.Const
 import java.util.concurrent.TimeUnit
 import android.text.Editable
 import android.text.TextWatcher
-
-
+import android.view.WindowManager
 
 
 class AuthActivity : BaseActivity(), AuthView {
@@ -63,6 +62,8 @@ class AuthActivity : BaseActivity(), AuthView {
         return Single.fromCallable { --seconds }
     }
     override fun setupUI() {
+        etPhone.requestFocus()
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
     override fun setupUX() {
@@ -82,6 +83,15 @@ class AuthActivity : BaseActivity(), AuthView {
             when (result) {
                 EditorInfo.IME_ACTION_DONE -> {
                     authPresenter.checkCode(etSmsCode.text.toString(), false)
+                }
+            }
+            false
+        }
+        etPhone.setOnEditorActionListener { textView, actionId, keyEvent ->
+            val result = actionId and EditorInfo.IME_MASK_ACTION
+            when (result) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    btnGetSmsCode.isEnabled = true
                 }
             }
             false

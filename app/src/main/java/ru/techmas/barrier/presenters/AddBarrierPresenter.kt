@@ -29,7 +29,7 @@ constructor(
     : BasePresenter<AddBarrierView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener {
 
     private lateinit var phone: String
-    private lateinit var fileName: String
+    private var fileName: String = ""
 
     override fun errorCamera(message: String) {
         viewState.showError(message)
@@ -41,17 +41,23 @@ constructor(
     }
 
     fun addBarrier(name: String, address: String, phone: String) {
-        this.phone = phone
+        this.phone = formatPhone(phone)
         val request = restApi.barrier.addBarrier(
                 preferenceHelper.number!!,
-                preferenceHelper.token!!, "", phone, address, name)
+                preferenceHelper.token!!, "", this.phone, address, name)
                 .compose(RxUtils.httpSchedulers())
                 .subscribe({ successAddBarrier(it) }, { handleError(it) })
         unSubscribeOnDestroy(request)
     }
 
+    // TODO: Refactor this
+    private fun formatPhone(phone: String):String {
+        return Regex("[^0-9]").replace(phone, "")
+    }
+
     private fun successAddBarrier(response: StateResponse) {
-        appData.photos[phone] = fileName
+        if (fileName.isNotEmpty())
+            appData.photos[phone] = fileName
         preferenceHelper.savePhotos(appData.photos)
         viewState.close()
     }

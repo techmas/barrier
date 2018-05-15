@@ -24,6 +24,10 @@ internal constructor(val restApi: RestApi) : BasePresenter<MainView>(), Navigati
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.nav_open -> viewState.startFragment(MainFragment.newInstance())
+            R.id.nav_cameras-> viewState.showStub()
+            R.id.nav_map-> viewState.showStub()
+            R.id.nav_wallet-> viewState.showStub()
             R.id.nav_settings -> viewState.startActivity(SettingsActivity::class.java)
         }
         viewState.closeDrawers()

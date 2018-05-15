@@ -29,6 +29,7 @@ class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
 
     override fun setupUX() {
         btnDelete.setOnClickListener { barrierDetailPresenter.removeBarrier() }
+        btnModernization.setOnClickListener { startActivity(JivoActivity::class.java) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

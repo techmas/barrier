@@ -31,7 +31,8 @@ constructor(private val restApi: RestApi,
     }
 
     private fun successRemoveBarrier(response: StateResponse) {
-//        appData.barriers.remove(appData.barrier)
+        appData.barriers.remove(appData.barrier)
+        appData.photos.remove(appData.barrier.number)
         viewState.close()
     }
 

@@ -29,6 +29,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tvDemo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lbl_launch_demo_training"
@@ -36,6 +37,7 @@
         android:layout_marginTop="@dimen/activity_ultra_big_margin"/>
 
     <TextView
+        android:id="@+id/tvSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lbl_technical_support"

@@ -45,7 +45,8 @@ class SplashActivity : BaseActivity(), SplashView {
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 .onSuccess(Runnable { this.successPermission() })
-                .onFailure(Runnable { this.failurePermission() })
+                .onDenied(Runnable { this.failurePermission() })
+                .onNeverAskAgain({ this.failurePermission() })
                 .run()
     }
 

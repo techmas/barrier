@@ -20,4 +20,8 @@ constructor(val preferenceHelper: PreferenceHelper) : BasePresenter<SettingsView
         viewState.startActivity(AuthActivity::class.java)
     }
 
+    fun showDemo() {
+        viewState.showStub()
+    }
+
 }

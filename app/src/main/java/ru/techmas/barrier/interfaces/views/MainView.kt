@@ -7,6 +7,7 @@ import ru.techmas.barrier.interfaces.utils_view.NavigatorActivityView
 interface MainView : BaseView, NavigatorActivityView {
     fun closeDrawers()
     fun setupHeader(account: Account)
+    fun showStub()
 }
 
 
