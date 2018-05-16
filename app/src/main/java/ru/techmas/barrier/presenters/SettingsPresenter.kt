@@ -12,7 +12,12 @@ import javax.inject.Inject
 
 @InjectViewState
 class SettingsPresenter @Inject
-constructor(val preferenceHelper: PreferenceHelper) : BasePresenter<SettingsView>() {
+constructor(
+        private val preferenceHelper: PreferenceHelper) : BasePresenter<SettingsView>() {
+
+    init {
+        viewState.setHand(preferenceHelper.hand!!)
+    }
 
     fun logout() {
         preferenceHelper.exit()
@@ -22,6 +27,10 @@ constructor(val preferenceHelper: PreferenceHelper) : BasePresenter<SettingsView
 
     fun showDemo() {
         viewState.showStub()
+    }
+
+    fun toggleHand(checked: Boolean) {
+        preferenceHelper.hand = checked
     }
 
 }

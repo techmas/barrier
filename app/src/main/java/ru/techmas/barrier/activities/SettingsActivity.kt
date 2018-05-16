@@ -31,6 +31,11 @@ class SettingsActivity : BaseSingleActivity(), SettingsView {
         btnLogout.setOnClickListener { settingsPresenter.logout() }
         tvSupport.setOnClickListener { startActivity(JivoActivity::class.java) }
         tvDemo.setOnClickListener { settingsPresenter.showDemo() }
+        cbOpen.setOnClickListener { settingsPresenter.toggleHand(cbOpen.isChecked)}
+    }
+
+    override fun setHand(hand: Boolean) {
+        cbOpen.isChecked = hand
     }
 
     override fun showStub() {

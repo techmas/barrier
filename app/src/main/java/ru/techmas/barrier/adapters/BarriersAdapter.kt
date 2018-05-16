@@ -14,7 +14,7 @@ import ru.techmas.barrier.api.models.Barriers
 import ru.techmas.barrier.models.Photos
 import ru.techmas.barrier.utils.ImageLoader
 
-class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos)
+class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos, val hand: Boolean)
     : BaseRecyclerAdapter<Barrier, BarriersAdapter.ViewHolder>(items) {
 
     lateinit var onBarrierClickListener: OnBarrierClickListener
@@ -26,7 +26,11 @@ class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_barrier, viewGroup, false)
+        val view =
+                if (hand)
+                    LayoutInflater.from(viewGroup.context).inflate(R.layout.item_barrier_right, viewGroup, false)
+                else
+                    LayoutInflater.from(viewGroup.context).inflate(R.layout.item_barrier, viewGroup, false)
         return ViewHolder(view)
     }
 

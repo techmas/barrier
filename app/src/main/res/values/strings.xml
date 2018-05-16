@@ -40,5 +40,6 @@
     <string name="alert_title">Раздел в разработке</string>
     <string name="alert_message">Данный раздел появится чуть позже, не переживайте.</string>
     <string name="permission_info_rationale">Необходимо разрешения для работы приложения</string>
+    <string name="server_error">Server Error</string>
 
 </resources>

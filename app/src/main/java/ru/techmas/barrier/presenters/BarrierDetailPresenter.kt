@@ -1,12 +1,14 @@
 package ru.techmas.barrier.presenters
 
 
+import android.graphics.Bitmap
 import ru.techmas.barrier.interfaces.views.BarrierDetailView
 
 import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.api.models.StateResponse
 import ru.techmas.barrier.models.AppData
+import ru.techmas.barrier.utils.CameraHelper
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
@@ -17,10 +19,21 @@ import javax.inject.Inject
 class BarrierDetailPresenter @Inject
 constructor(private val restApi: RestApi,
             private val preferenceHelper: PreferenceHelper,
-            private val appData: AppData) : BasePresenter<BarrierDetailView>() {
+            private val appData: AppData) : BasePresenter<BarrierDetailView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener {
+
+    private var fileName: String = ""
 
     init {
         viewState.showData(appData.barrier, appData.photos)
+    }
+
+    override fun errorCamera(message: String) {
+        viewState.showError(message)
+    }
+
+    override fun successCameraPhoto(name: String, bitmap: Bitmap) {
+        fileName = name
+        viewState.showPhoto(bitmap)
     }
 
     fun removeBarrier() {
@@ -46,6 +59,9 @@ constructor(private val restApi: RestApi,
     }
 
     private fun successUpdateBarrier(response: StateResponse) {
+        if (fileName.isNotEmpty())
+            appData.photos[appData.barrier.number] = fileName
+        preferenceHelper.savePhotos(appData.photos)
         viewState.close()
     }
 

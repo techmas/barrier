@@ -2,6 +2,7 @@ package ru.techmas.barrier.activities
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,6 +17,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_barrier_detail.*
 import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.models.Photos
+import ru.techmas.barrier.utils.CameraHelper
 import ru.techmas.barrier.utils.ImageLoader
 
 import ru.techmas.barrier.utils.Injector
@@ -23,13 +25,33 @@ import ru.techmas.barrier.utils.Injector
 
 class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
 
-    override fun setupUI() {
+    private lateinit var cameraHelper: CameraHelper
 
+    private fun getCameraPhoto() {
+        cameraHelper = CameraHelper(this)
+                .setFilePrefix("Barrier")
+                .setViewDimensions(ivPhoto)
+                .onSuccess(barrierDetailPresenter)
+                .onError(barrierDetailPresenter)
+                .execute()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        cameraHelper.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun showPhoto(bitmap: Bitmap) {
+        ivPhoto.setImageBitmap(bitmap)
+    }
+
+    override fun setupUI() {
     }
 
     override fun setupUX() {
         btnDelete.setOnClickListener { barrierDetailPresenter.removeBarrier() }
         btnModernization.setOnClickListener { startActivity(JivoActivity::class.java) }
+        ivPhoto.setOnClickListener { getCameraPhoto() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

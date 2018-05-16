@@ -17,6 +17,7 @@ class PreferenceHelper(private val preferences: SharedPreferences) : IPreference
         private const val PREF_TOKEN_API = "tokenAPI"
         private const val PREF_NUMBER = "number"
         private const val PREF_PHOTOS = "photos"
+        private const val PREF_HAND = "hand"
     }
 
     internal var token: String? = null
@@ -26,6 +27,18 @@ class PreferenceHelper(private val preferences: SharedPreferences) : IPreference
         }
         get() = if (field == null) {
             field = preferences.getString(PREF_TOKEN_API, "")
+            field
+        } else {
+            field
+        }
+
+    internal var hand: Boolean? = null
+        set(value) {
+            preferences.edit().putBoolean(PREF_HAND, value!!).apply()
+            field = value
+        }
+        get() = if (field == null) {
+            field = preferences.getBoolean(PREF_HAND, false)
             field
         } else {
             field

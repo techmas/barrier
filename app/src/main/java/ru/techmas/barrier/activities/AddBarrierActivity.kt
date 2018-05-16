@@ -25,6 +25,19 @@ class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
 
     private lateinit var cameraHelper: CameraHelper
 
+    private fun getCameraPhoto() {
+        cameraHelper = CameraHelper(this)
+                .setFilePrefix("Barrier")
+                .setViewDimensions(ivPhoto)
+                .onSuccess(addBarrierPresenter)
+                .onError(addBarrierPresenter)
+                .execute()
+    }
+
+    override fun showPhoto(bitmap: Bitmap) {
+        ivPhoto.setImageBitmap(bitmap)
+    }
+
     override fun close() {
         setResult(Activity.RESULT_OK)
         finish()
@@ -40,19 +53,6 @@ class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
                 etName.text.toString(),
                 etAddress.text.toString(),
                 etPhone.text.toString()) }
-    }
-
-    private fun getCameraPhoto() {
-        cameraHelper = CameraHelper(this)
-                .setFilePrefix("Barrier")
-                .setViewDimensions(ivPhoto)
-                .onSuccess(addBarrierPresenter)
-                .onError(addBarrierPresenter)
-                .execute()
-    }
-
-    override fun showPhoto(bitmap: Bitmap) {
-        ivPhoto.setImageBitmap(bitmap)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

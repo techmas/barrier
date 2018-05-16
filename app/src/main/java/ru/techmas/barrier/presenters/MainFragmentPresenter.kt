@@ -5,6 +5,7 @@ import ru.techmas.barrier.interfaces.views.MainFragmentView
 
 import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.Const
+import ru.techmas.barrier.R
 import ru.techmas.barrier.activities.BarrierDetailActivity
 import ru.techmas.barrier.adapters.BarriersAdapter
 import ru.techmas.barrier.api.RestApi
@@ -14,6 +15,7 @@ import ru.techmas.barrier.api.models.StateResponse
 import ru.techmas.barrier.models.AppData
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
+import ru.techmas.barrier.utils.presenter.Resources
 
 import javax.inject.Inject
 
@@ -23,6 +25,7 @@ class MainFragmentPresenter @Inject
 internal constructor(
         private val restApi: RestApi,
         private val appData: AppData,
+        private val res: Resources,
         private val preferenceHelper: PreferenceHelper) :
         BasePresenter<MainFragmentView>(), BarriersAdapter.OnBarrierClickListener {
 
@@ -63,12 +66,12 @@ internal constructor(
 
     override fun handleError(throwable: Throwable) {
         super.handleError(throwable)
-        viewState.showError(throwable.localizedMessage)
+        viewState.showError(res.getString(R.string.server_error))
     }
 
     private fun successGetData(response: Barriers) {
         appData.barriers = response
-        viewState.showData(response, appData.photos)
+        viewState.showData(response, appData.photos, preferenceHelper.hand!!)
     }
 
 //    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
