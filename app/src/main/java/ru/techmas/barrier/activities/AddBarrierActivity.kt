@@ -1,9 +1,11 @@
 package ru.techmas.barrier.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,13 +19,44 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_add_barrier.*
 import ru.techmas.barrier.utils.CameraHelper
+import ru.techmas.barrier.utils.GalleryHelper
 
 import ru.techmas.barrier.utils.Injector
+import android.os.Build.VERSION
+import android.os.Build.VERSION.SDK_INT
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
+import android.os.Build
 
 
 class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
 
-    private lateinit var cameraHelper: CameraHelper
+    private var cameraHelper: CameraHelper? = null
+    private var galleryHelper: GalleryHelper? = null
+
+    // TODO: Refactor to separate manager
+    private fun showPictureDialog() {
+        val pictureDialog = AlertDialog.Builder(this, R.style.MyAlertDialogTheme)
+        pictureDialog.setTitle(getString(R.string.choose_action))
+        val pictureDialogItems = arrayOf(getString(R.string.gallery_pick), getString(R.string.camera_pick))
+        pictureDialog.setItems(pictureDialogItems, { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> getCameraPhoto()
+            }
+        })
+        pictureDialog.show()
+    }
+
+    private fun choosePhotoFromGallary() {
+        galleryHelper = GalleryHelper(this)
+                .setFilePrefix("Barrier")
+                .setViewDimensions(ivPhoto)
+                .onSuccess(addBarrierPresenter)
+                .onError(addBarrierPresenter)
+                .execute()
+    }
+
 
     private fun getCameraPhoto() {
         cameraHelper = CameraHelper(this)
@@ -48,7 +81,7 @@ class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
     }
 
     override fun setupUX() {
-        ivPhoto.setOnClickListener { getCameraPhoto() }
+        ivPhoto.setOnClickListener { showPictureDialog() }
         btnAdd.setOnClickListener { addBarrierPresenter.addBarrier(
                 etName.text.toString(),
                 etAddress.text.toString(),
@@ -57,7 +90,8 @@ class AddBarrierActivity : BaseSingleActivity(), AddBarrierView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        cameraHelper.onActivityResult(requestCode, resultCode, data)
+        galleryHelper?.onActivityResult(requestCode, resultCode, data)
+        cameraHelper?.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

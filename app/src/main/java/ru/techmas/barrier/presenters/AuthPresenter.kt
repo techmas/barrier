@@ -18,6 +18,7 @@ class AuthPresenter @Inject
 constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper) : BasePresenter<AuthView>() {
 
     fun sendSms(number: String) {
+        viewState.showCode()
         preferenceHelper.number = number
         val request = restApi.user.sendSms(number)
                 .compose(RxUtils.httpSchedulers())
@@ -26,7 +27,6 @@ constructor(private val restApi: RestApi, val preferenceHelper: PreferenceHelper
     }
 
     private fun successSendSms(response: StateResponse) {
-        viewState.showCode()
     }
 
     fun supportClick() {

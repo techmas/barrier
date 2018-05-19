@@ -69,24 +69,26 @@ class AuthActivity : BaseActivity(), AuthView {
     override fun setupUX() {
         btnGetSmsCode.setOnClickListener { authPresenter.sendSms(etPhone.text.toString()) }
         ivSupport.setOnClickListener { authPresenter.supportClick() }
-//        etPhone.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+        etSmsCode.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 //                etPhone.setText("+7")
-//            }
-//            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-//            override fun afterTextChanged(editable: Editable) {
-//            }
-//        })
-        etSmsCode.setOnFocusChangeListener { v, hasFocus -> authPresenter.checkCode(etSmsCode.text.toString(), hasFocus)}
-        etSmsCode.setOnEditorActionListener { textView, actionId, keyEvent ->
-            val result = actionId and EditorInfo.IME_MASK_ACTION
-            when (result) {
-                EditorInfo.IME_ACTION_DONE -> {
-                    authPresenter.checkCode(etSmsCode.text.toString(), false)
-                }
             }
-            false
-        }
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                if (editable.length > 4)
+                    authPresenter.checkCode(etSmsCode.text.toString(), false)
+            }
+        })
+//        etSmsCode.setOnFocusChangeListener { v, hasFocus -> authPresenter.checkCode(etSmsCode.text.toString(), hasFocus)}
+//        etSmsCode.setOnEditorActionListener { textView, actionId, keyEvent ->
+//            val result = actionId and EditorInfo.IME_MASK_ACTION
+//            when (result) {
+//                EditorInfo.IME_ACTION_DONE -> {
+//                    authPresenter.checkCode(etSmsCode.text.toString(), false)
+//                }
+//            }
+//            false
+//        }
         etPhone.setOnEditorActionListener { textView, actionId, keyEvent ->
             val result = actionId and EditorInfo.IME_MASK_ACTION
             when (result) {

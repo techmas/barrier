@@ -42,8 +42,8 @@ class MainFragment : BaseFragment(), MainFragmentView {
     override fun setupUX() {
     }
 
-    override fun showData(barriers: Barriers, photos: Photos, hand: Boolean) {
-        adapter = BarriersAdapter(context!!, barriers, photos, hand)
+    override fun showData(barriers: Barriers, photos: Photos, hand: Boolean, added: ArrayList<String>) {
+        adapter = BarriersAdapter(context!!, barriers, photos, hand, added)
         adapter!!.onBarrierClickListener = mainFragmentPresenter
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter

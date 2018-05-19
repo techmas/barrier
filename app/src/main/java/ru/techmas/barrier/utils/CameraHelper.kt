@@ -118,7 +118,7 @@ class CameraHelper(private val activity: Activity) {
 //    }
 //
     companion object {
-        private val CAMERA_REQUEST_CODE = 101
+        private val CAMERA_REQUEST_CODE = 151
         private val DIALOG_WITHOUT_CUSTOM_COLOR = 0
     }
 

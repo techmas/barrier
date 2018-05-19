@@ -1,8 +1,12 @@
 package ru.techmas.barrier.activities
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,7 +14,6 @@ import android.view.MenuItem
 import ru.techmas.barrier.interfaces.views.BarrierDetailView
 import ru.techmas.barrier.presenters.BarrierDetailPresenter
 import ru.techmas.barrier.R
-
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -21,11 +24,37 @@ import ru.techmas.barrier.utils.CameraHelper
 import ru.techmas.barrier.utils.ImageLoader
 
 import ru.techmas.barrier.utils.Injector
+import android.provider.MediaStore
+import ru.techmas.barrier.utils.GalleryHelper
+import java.io.IOException
 
 
 class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
 
-    private lateinit var cameraHelper: CameraHelper
+    private var cameraHelper: CameraHelper? = null
+    private var galleryHelper: GalleryHelper? = null
+
+    private fun showPictureDialog() {
+        val pictureDialog = AlertDialog.Builder(this)
+        pictureDialog.setTitle(getString(R.string.choose_action))
+        val pictureDialogItems = arrayOf(getString(R.string.gallery_pick), getString(R.string.camera_pick))
+        pictureDialog.setItems(pictureDialogItems, { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> getCameraPhoto()
+            }
+        })
+        pictureDialog.show()
+    }
+
+    private fun choosePhotoFromGallary() {
+        galleryHelper = GalleryHelper(this)
+                .setFilePrefix("Barrier")
+                .setViewDimensions(ivPhoto)
+                .onSuccess(barrierDetailPresenter)
+                .onError(barrierDetailPresenter)
+                .execute()
+    }
 
     private fun getCameraPhoto() {
         cameraHelper = CameraHelper(this)
@@ -38,7 +67,8 @@ class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        cameraHelper.onActivityResult(requestCode, resultCode, data)
+        galleryHelper?.onActivityResult(requestCode, resultCode, data)
+        cameraHelper?.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun showPhoto(bitmap: Bitmap) {
@@ -51,7 +81,7 @@ class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
     override fun setupUX() {
         btnDelete.setOnClickListener { barrierDetailPresenter.removeBarrier() }
         btnModernization.setOnClickListener { startActivity(JivoActivity::class.java) }
-        ivPhoto.setOnClickListener { getCameraPhoto() }
+        ivPhoto.setOnClickListener { showPictureDialog() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -9,6 +9,7 @@ import ru.techmas.barrier.api.RestApi
 import ru.techmas.barrier.api.models.StateResponse
 import ru.techmas.barrier.models.AppData
 import ru.techmas.barrier.utils.CameraHelper
+import ru.techmas.barrier.utils.GalleryHelper
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
@@ -19,7 +20,7 @@ import javax.inject.Inject
 class BarrierDetailPresenter @Inject
 constructor(private val restApi: RestApi,
             private val preferenceHelper: PreferenceHelper,
-            private val appData: AppData) : BasePresenter<BarrierDetailView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener {
+            private val appData: AppData) : BasePresenter<BarrierDetailView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener, GalleryHelper.OnSuccessListener, GalleryHelper.OnErrorListener {
 
     private var fileName: String = ""
 
@@ -36,6 +37,16 @@ constructor(private val restApi: RestApi,
         viewState.showPhoto(bitmap)
     }
 
+    override fun errorGallery(message: String) {
+        viewState.showError(message)
+    }
+
+    override fun successGalleryPhoto(name: String, bitmap: Bitmap) {
+        fileName = name
+        viewState.showPhoto(bitmap)
+    }
+
+
     fun removeBarrier() {
         val request = restApi.barrier.removeBarrier(preferenceHelper.number!!, preferenceHelper.token!!, appData.barrier.id)
                 .compose(RxUtils.httpSchedulers())
@@ -46,6 +57,7 @@ constructor(private val restApi: RestApi,
     private fun successRemoveBarrier(response: StateResponse) {
         appData.barriers.remove(appData.barrier)
         appData.photos.remove(appData.barrier.number)
+        appData.added.remove(appData.barrier.number)
         viewState.close()
     }
 

@@ -7,6 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    </style>
+
     <style name="DarkTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -87,6 +90,9 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:padding">@dimen/activity_very_small_margin</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="BlueButton" parent="editTextRound">
@@ -132,13 +138,19 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:inputType">text</item>
+        <item name="android:inputType">textShortMessage</item>
         <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
         <item name="android:textColorHint">@color/colorPrimaryLight</item>
         <item name="android:textColor">@color/light_background</item>
     </style>
 
     <style name="LightInput">
+        <item name="android:inputType">textShortMessage</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
         <item name="android:layout_marginStart">@dimen/activity_ultra_big_margin</item>
         <item name="android:layout_marginEnd">@dimen/activity_ultra_big_margin</item>
         <item name="android:layout_width">match_parent</item>

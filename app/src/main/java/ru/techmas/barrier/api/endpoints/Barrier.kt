@@ -27,6 +27,13 @@ interface Barrier {
 
     @FormUrlEncoded
     @POST("api.php")
+    fun openAddedBarrier(@Field("login") number: String,
+                    @Field("key") token: String,
+                    @Field("from") from: String,
+                    @Field("to") to: String): Observable<StateResponse>
+
+    @FormUrlEncoded
+    @POST("api.php")
     fun openBarrier(@Field("login") number: String,
                     @Field("key") token: String,
                     @Field("command") command: String,

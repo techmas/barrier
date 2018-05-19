@@ -6,6 +6,7 @@ import ru.techmas.barrier.interfaces.views.MainFragmentView
 import com.arellomobile.mvp.InjectViewState
 import ru.techmas.barrier.Const
 import ru.techmas.barrier.R
+import ru.techmas.barrier.activities.AuthActivity
 import ru.techmas.barrier.activities.BarrierDetailActivity
 import ru.techmas.barrier.adapters.BarriersAdapter
 import ru.techmas.barrier.api.RestApi
@@ -30,22 +31,32 @@ internal constructor(
         BasePresenter<MainFragmentView>(), BarriersAdapter.OnBarrierClickListener {
 
     init {
-//        getBarriers()
     }
 
     override fun onClickOpen(item: Barrier) {
         appData.barrier = item
-        val request = restApi.barrier.openBarrier(preferenceHelper.number!!, preferenceHelper.token!!, "open", item.id)
-                .compose(RxUtils.httpSchedulers())
-                .subscribe({ successOpenBarrier(it) }, { handleError(it) })
-        unSubscribeOnDestroy(request)
+        if (appData.barrier.number in appData.added) {
+            val request = restApi.barrier.openAddedBarrier(
+                    preferenceHelper.number!!,
+                    preferenceHelper.token!!,
+                    preferenceHelper.number!!,
+                    appData.barrier.number)
+                    .compose(RxUtils.httpSchedulers())
+                    .subscribe({ successOpenBarrier(it) }, { handleOpenError(it) })
+            unSubscribeOnDestroy(request)
+        }
+        else {
+            val request = restApi.barrier.openBarrier(preferenceHelper.number!!, preferenceHelper.token!!, "open", item.id)
+                    .compose(RxUtils.httpSchedulers())
+                    .subscribe({ successOpenBarrier(it) }, { handleOpenError(it) })
+            unSubscribeOnDestroy(request)
+        }
     }
 
     private fun successOpenBarrier(response: StateResponse) {
         appData.barrier.opened = true
         if (response.state == Const.State.OK)
             viewState.updateData(appData.barrier)
-//            viewState.selectOpen(appData.barrier)
     }
 
     override fun onClickSettings(item: Barrier) {
@@ -60,18 +71,30 @@ internal constructor(
     fun getBarriers() {
         val request = restApi.barrier.getBarriers(preferenceHelper.number!!, preferenceHelper.token!!, "")
                 .compose(RxUtils.httpSchedulers())
-                .subscribe({ successGetData(it) }, { handleError(it) })
+                .subscribe({ successGetData(it) }, { handleListError(it) })
         unSubscribeOnDestroy(request)
     }
 
-    override fun handleError(throwable: Throwable) {
+    fun handleListError(throwable: Throwable) {
+        super.handleError(throwable)
+        viewState.showError(res.getString(R.string.server_error))
+        exit()
+    }
+
+    fun handleOpenError(throwable: Throwable) {
         super.handleError(throwable)
         viewState.showError(res.getString(R.string.server_error))
     }
 
+    private fun exit() {
+        preferenceHelper.exit()
+        viewState.close()
+        viewState.startActivity(AuthActivity::class.java)
+    }
+
     private fun successGetData(response: Barriers) {
         appData.barriers = response
-        viewState.showData(response, appData.photos, preferenceHelper.hand!!)
+        viewState.showData(response, appData.photos, preferenceHelper.hand!!, appData.added)
     }
 
 //    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

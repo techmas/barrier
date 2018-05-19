@@ -14,6 +14,7 @@ import ru.techmas.barrier.api.models.Barrier
 import ru.techmas.barrier.api.models.StateResponse
 import ru.techmas.barrier.models.AppData
 import ru.techmas.barrier.utils.CameraHelper
+import ru.techmas.barrier.utils.GalleryHelper
 import ru.techmas.barrier.utils.RxUtils
 import ru.techmas.barrier.utils.presenter.PreferenceHelper
 
@@ -26,10 +27,18 @@ constructor(
         private val restApi: RestApi,
         private val preferenceHelper: PreferenceHelper,
         private val appData: AppData)
-    : BasePresenter<AddBarrierView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener {
-
+    : BasePresenter<AddBarrierView>(), CameraHelper.OnSuccessListener, CameraHelper.OnErrorListener, GalleryHelper.OnSuccessListener, GalleryHelper.OnErrorListener {
     private lateinit var phone: String
     private var fileName: String = ""
+
+    override fun errorGallery(message: String) {
+        viewState.showError(message)
+    }
+
+    override fun successGalleryPhoto(name: String, bitmap: Bitmap) {
+        fileName = name
+        viewState.showPhoto(bitmap)
+    }
 
     override fun errorCamera(message: String) {
         viewState.showError(message)
@@ -58,6 +67,7 @@ constructor(
     private fun successAddBarrier(response: StateResponse) {
         if (fileName.isNotEmpty())
             appData.photos[phone] = fileName
+        appData.added.add(phone)
         preferenceHelper.savePhotos(appData.photos)
         viewState.close()
     }

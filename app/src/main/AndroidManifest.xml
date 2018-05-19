@@ -57,7 +57,8 @@
         <activity android:name=".activities.BarrierDetailActivity" />
         <activity
             android:name=".activities.AddBarrierActivity"
-            android:theme="@style/DarkTheme" />
+            android:theme="@style/DarkTheme"
+            />
         <activity android:name=".activities.JivoActivity" />
     </application>
 </manifest>

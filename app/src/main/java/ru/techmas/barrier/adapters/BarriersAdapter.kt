@@ -1,6 +1,7 @@
 package ru.techmas.barrier.adapters
 
 import android.content.Context
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import ru.techmas.barrier.api.models.Barriers
 import ru.techmas.barrier.models.Photos
 import ru.techmas.barrier.utils.ImageLoader
 
-class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos, val hand: Boolean)
+class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos, val hand: Boolean, val added: ArrayList<String>)
     : BaseRecyclerAdapter<Barrier, BarriersAdapter.ViewHolder>(items) {
 
     lateinit var onBarrierClickListener: OnBarrierClickListener
@@ -46,6 +47,13 @@ class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos,
                     ImageLoader.load(context, ivPhoto, photos[number]!!)
                 }
                 btnOpen.isSelected = opened
+                if (number in added) {
+                    cardContainer.setCardBackgroundColor(context.resources.getColor(R.color.colorAccent))
+                    ivSettings.setImageDrawable(context.resources.getDrawable(R.drawable.setting_2))
+                } else {
+                    cardContainer.setCardBackgroundColor(context.resources.getColor(R.color.colorPrimary))
+                    ivSettings.setImageDrawable(context.resources.getDrawable(R.drawable.setting_1))
+                }
 //                btnOpen.setBackgroundColor(
 //                        if (opened) context.resources.getColor(R.color.colorOpen)
 //                        else context.resources.getColor(R.color.light_background))
@@ -69,6 +77,7 @@ class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos,
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //        var ltContainer: RelativeLayout = itemView.findViewById(R.id.ltContainer)
+        var cardContainer: CardView = itemView.findViewById(R.id.cardContainer)
         var ivPhoto: CircleImageView = itemView.findViewById(R.id.ivPhoto)
         var tvName = itemView.findViewById(R.id.tvName) as TextView
         var tvNumber = itemView.findViewById(R.id.tvNumber) as TextView

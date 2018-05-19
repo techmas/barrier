@@ -41,5 +41,8 @@
     <string name="alert_message">Данный раздел появится чуть позже, не переживайте.</string>
     <string name="permission_info_rationale">Необходимо разрешения для работы приложения</string>
     <string name="server_error">Server Error</string>
+    <string name="choose_action">Выберите действие</string>
+    <string name="gallery_pick">Изображение из галереи</string>
+    <string name="camera_pick">Сфотографировать</string>
 
 </resources>
