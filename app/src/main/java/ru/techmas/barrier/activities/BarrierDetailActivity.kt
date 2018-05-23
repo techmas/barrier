@@ -25,6 +25,7 @@ import ru.techmas.barrier.utils.ImageLoader
 
 import ru.techmas.barrier.utils.Injector
 import android.provider.MediaStore
+import android.view.View
 import ru.techmas.barrier.utils.GalleryHelper
 import java.io.IOException
 
@@ -104,6 +105,7 @@ class BarrierDetailActivity : BaseSingleActivity(), BarrierDetailView {
     override fun showData(barrier: Barrier, photos: Photos) {
         etName.setText(barrier.name)
         etAddress.setText(barrier.address)
+        ltModernization.visibility = if (barrier.isOld()) View.VISIBLE else View.INVISIBLE
         if (photos.containsKey(barrier.number))
             ImageLoader.load(this, ivPhoto, photos[barrier.number]!!)
     }

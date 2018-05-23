@@ -20,4 +20,6 @@ data class Barrier(
     var name: String = "",
     var old: String = "",
     var opened: Boolean = false
-)
+) {
+    fun isOld() = old == "1"
+}

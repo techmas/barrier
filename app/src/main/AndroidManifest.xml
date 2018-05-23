@@ -54,10 +54,12 @@
             android:theme="@style/MainActivityTheme" />
         <activity android:name=".activities.SupportActivity" />
         <activity android:name=".activities.SettingsActivity" />
-        <activity android:name=".activities.BarrierDetailActivity" />
+        <activity android:name=".activities.BarrierDetailActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".activities.AddBarrierActivity"
             android:theme="@style/DarkTheme"
+            android:windowSoftInputMode="adjustResize"
             />
         <activity android:name=".activities.JivoActivity" />
     </application>

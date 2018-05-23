@@ -35,7 +35,7 @@ internal constructor(
 
     override fun onClickOpen(item: Barrier) {
         appData.barrier = item
-        if (appData.barrier.number in appData.added) {
+        if (appData.barrier.number in appData.added || appData.barrier.isOld()) {
             val request = restApi.barrier.openAddedBarrier(
                     preferenceHelper.number!!,
                     preferenceHelper.token!!,

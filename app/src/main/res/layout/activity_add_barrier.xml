@@ -1,127 +1,132 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="@dimen/activity_middle_margin"
     android:background="@color/light_background"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_middle_margin"
-        android:layout_marginLeft="@dimen/activity_middle_margin"
-        android:layout_marginRight="@dimen/activity_middle_margin"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:descendantFocusability="beforeDescendants"
-        android:background="@drawable/rounded_background"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_middle_margin">
+            android:layout_marginLeft="@dimen/activity_middle_margin"
+            android:layout_marginRight="@dimen/activity_middle_margin"
+            android:background="@drawable/rounded_background"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilName"
-                style="@style/LightInput">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_middle_margin">
 
-                <EditText
-                    android:id="@+id/etName"
-                    android:hint="@string/name_barrier"
-                    style="@style/LightEditText" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilName"
+                    style="@style/LightInput">
 
-            </android.support.design.widget.TextInputLayout>
-            <!--<TextView-->
+                    <EditText
+                        android:id="@+id/etName"
+                        style="@style/LightEditText"
+                        android:hint="@string/name_barrier" />
+
+                </android.support.design.widget.TextInputLayout>
+                <!--<TextView-->
                 <!--android:id="@+id/tvName"-->
                 <!--style="@style/PrimaryLightStandard"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:text="@string/name_barrier" />-->
 
-            <ImageView
-                android:id="@+id/ivSettingsName"
+                <ImageView
+                    android:id="@+id/ivSettingsName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_big_margin"
+                    android:layout_toEndOf="@+id/tilName"
+                    android:padding="@dimen/activity_small_margin"
+                    android:src="@drawable/edit_1"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivPhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_big_margin"
-                android:layout_toEndOf="@+id/tilName"
-                android:padding="@dimen/activity_small_margin"
-                android:visibility="gone"
-                android:src="@drawable/edit_1" />
+                android:layout_margin="@dimen/activity_big_margin"
+                android:src="@drawable/addphoto" />
 
-        </RelativeLayout>
+            <TextView
+                style="@style/WhiteStandard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:gravity="center"
+                android:text="@string/lbl_phone_number_opening_barrier" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_big_margin"
-            android:src="@drawable/addphoto" />
+            <EditText
+                android:id="@+id/etPhone"
+                style="@style/editTextRound"
+                android:layout_width="230dp"
+                android:hint="@string/lbl_phone_number"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:text="+7"
+                android:textColorHint="@color/color_separate_line" />
 
-        <TextView
-            style="@style/WhiteStandard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_small_margin"
-            android:gravity="center"
-            android:text="@string/lbl_phone_number_opening_barrier" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_middle_margin"
+                android:layout_marginTop="@dimen/activity_big_margin">
 
-        <EditText
-            android:id="@+id/etPhone"
-            style="@style/editTextRound"
-            android:layout_width="230dp"
-            android:maxLines="1"
-            android:inputType="phone"
-            android:hint="@string/lbl_phone_number"
-            android:text="+7"
-            android:textColorHint="@color/color_separate_line" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilAddress"
+                    style="@style/LightInput">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_middle_margin"
-            android:layout_marginTop="@dimen/activity_big_margin">
+                    <EditText
+                        android:id="@+id/etAddress"
+                        style="@style/LightEditText"
+                        android:hint="@string/address_barrier" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilAddress"
-                style="@style/LightInput">
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/etAddress"
-                    android:hint="@string/address_barrier"
-                    style="@style/LightEditText" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <!--<TextView-->
+                <!--<TextView-->
                 <!--android:id="@+id/tvAddress"-->
                 <!--style="@style/PrimaryLightStandard"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:text="@string/address_barrier" />-->
 
-            <ImageView
-                android:id="@+id/ivSettingsAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_big_margin"
-                android:layout_toEndOf="@+id/tilAddress"
-                android:padding="@dimen/activity_small_margin"
-                android:visibility="gone"
-                android:src="@drawable/edit_1" />
+                <ImageView
+                    android:id="@+id/ivSettingsAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_big_margin"
+                    android:layout_toEndOf="@+id/tilAddress"
+                    android:padding="@dimen/activity_small_margin"
+                    android:src="@drawable/edit_1"
+                    android:visibility="gone" />
 
-        </RelativeLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAdd"
+            style="@style/BlueButton"
+            android:layout_width="120dp"
+            android:layout_marginTop="@dimen/activity_very_big_margin"
+            android:text="@string/lbl_add" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnAdd"
-        style="@style/BlueButton"
-        android:layout_width="120dp"
-        android:layout_marginTop="@dimen/activity_very_big_margin"
-        android:text="@string/lbl_add" />
-
-</LinearLayout>
+</ScrollView>
 
 
