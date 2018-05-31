@@ -48,7 +48,7 @@ class BarriersAdapter(var context: Context, items: Barriers, val photos: Photos,
                 }
                 btnOpen.isSelected = opened
                 if (number in added || isOld()) {
-                    cardContainer.setCardBackgroundColor(context.resources.getColor(R.color.colorAccent))
+                    cardContainer.setCardBackgroundColor(context.resources.getColor(R.color.greyish_brown))
                     ivSettings.setImageDrawable(context.resources.getDrawable(R.drawable.setting_2))
                 } else {
                     cardContainer.setCardBackgroundColor(context.resources.getColor(R.color.colorPrimary))
